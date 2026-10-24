@@ -259,6 +259,18 @@ document.addEventListener("visibilitychange", async () => {
   } catch { /* the offline banner handles it */ }
 });
 
+// The public try-it copy (guest mode): say plainly that it's shared and wiped, so nobody types anything private.
+function showGuestBar(minutes) {
+  if (document.getElementById("guest-bar")) return;
+  const bar = el("div", { id: "guest-bar", class: "guest-bar", role: "note" },
+    el("strong", { text: "Public copy of AIRTAC Advance. " }),
+    el("span", { text: `Everyone who opens this link shares it, and everything is erased every ${minutes || 60} minutes. Don't type anything private. Answers use simple keyword rules here; on your own laptop AIRTAC uses a real AI model.` }));
+  const close = el("button", { type: "button", class: "icon-btn small", "aria-label": "Hide" }, icon("close"));
+  close.addEventListener("click", () => bar.remove());
+  bar.append(close);
+  document.body.prepend(bar);
+}
+
 async function wakeServer() {
   try {
     const health = await api("/api/health", undefined, 15000);
@@ -266,6 +278,7 @@ async function wakeServer() {
     showStatus("");
     setBadge(health);
     window.dispatchEvent(new CustomEvent("airtac:health", { detail: health }));   // the start-up screen reports it
+    if (health.guest) showGuestBar(health.guest_reset_minutes);
     if (health.missing_packages && health.missing_packages.length && !window.__toldMissing) {
       window.__toldMissing = true;   // once per page: some parts (the vault, the QR code...) need these packages
       toast({ title: "Some parts of AIRTAC aren't installed yet", body: `Missing: ${health.missing_packages.join(", ")}. Double-click repair_airtac.cmd in the AIRTAC Advance folder, then restart AIRTAC.` });

@@ -28,6 +28,7 @@ logsafe.install()   # hides anything that looks like a key in every log line (ag
 log = logging.getLogger("airtac.main")
 
 plugins.load_all()
+from airtac import guest  # noqa: E402  (the public copy's hourly reset)
 
 
 @asynccontextmanager
@@ -52,6 +53,8 @@ async def lifespan(_app):
                 except Exception:
                     log.exception("start-up of %s failed", plug.id)
     pairing.start_if_on(app)   # phone access on Wi-Fi (HTTPS), only if you switched it on
+    if config.GUEST:
+        guest.start()
     yield
     pairing.stop_listener()
     SCHEDULER.stop()
@@ -131,6 +134,7 @@ class RateLimiter:
 
 limiter = RateLimiter(int(config.section("server").get("remote_per_hour", 120)),
                       int(config.section("server").get("remote_per_day", 800)))
+GUEST_BLOCKED = ("/api/upload", "/api/security/scan", "/api/restart", "/api/voice/stt")
 LIMITED = ("/api/chat", "/api/confirm", "/api/work", "/api/feedback", "/api/login")
 
 
@@ -141,19 +145,22 @@ async def trusted_host_and_passcode(request: Request, call_next):
     #    to use AIRTAC from your phone (and read docs/SECURITY.md first).
     host = _host_name(request.headers.get("host", ""))
     lan = pairing.is_lan_request(request)
-    if host not in config.TRUSTED_HOSTS and not (lan and pairing.lan_host_ok(host)):
+    if not config.host_trusted(host) and not (lan and pairing.lan_host_ok(host)):
         return JSONResponse({"detail": "AIRTAC doesn't know this host name. Add it to [server] trusted_hosts."},
                             status_code=403)
     # 2. A change sent from another website is refused: your browser names the page that sent a request
     #    (Origin), and a page elsewhere must never add to your schedule, change keys or start a job.
     origin = request.headers.get("origin")
     if request.method not in ("GET", "HEAD", "OPTIONS") and origin and origin != "null" \
-            and _host_name(origin.split("//", 1)[-1].split("/")[0]) not in config.TRUSTED_HOSTS:
+            and not config.host_trusted(_host_name(origin.split("//", 1)[-1].split("/")[0])):
         return JSONResponse({"detail": "Requests from other websites aren't allowed."}, status_code=403)
     # 3. Any address other than this computer needs the passcode (a session cookie after /api/login).
     path = request.url.path
     device = pairing.device_from(request)          # a paired phone (Authorization: Bearer, or the web view's cookie)
-    if not auth.is_local_request(request) and not path.startswith("/icons/") and path not in OPEN_PATHS \
+    #    Guest mode (the public try-it copy) lets visitors in without one; they still never count as this PC.
+    if config.GUEST and path in GUEST_BLOCKED:
+        return JSONResponse({"detail": "This is switched off in the public copy of AIRTAC."}, status_code=403)
+    if not config.GUEST and not auth.is_local_request(request) and not path.startswith("/icons/") and path not in OPEN_PATHS \
             and not device and not auth.valid(request.cookies.get(auth.COOKIE)):
         if path.startswith("/api/") or path.startswith("/files/"):
             return JSONResponse({"detail": "Please sign in with your AIRTAC passcode."}, status_code=401)
@@ -171,21 +178,27 @@ async def trusted_host_and_passcode(request: Request, call_next):
                             status_code=403)
     # 5. Other devices have a limit on the requests that use a brain.
     if request.method == "POST" and path.startswith(LIMITED) and not auth.is_local_request(request):
-        reason = limiter.check(request.headers.get("x-forwarded-for", "").split(",")[-1].strip()
+        forwarded = [a.strip() for a in request.headers.get("x-forwarded-for", "").split(",") if a.strip()]
+        # Behind the public host's proxy the last address is the proxy itself; the visitor is the first one.
+        reason = limiter.check((forwarded[0] if config.GUEST and forwarded else forwarded[-1] if forwarded else "")
                                or (request.client.host if request.client else "unknown"))
         if reason:
             return JSONResponse({"detail": reason}, status_code=429)
     response = await call_next(request)
     for name, value in SECURITY_HEADERS.items():
-        response.headers.setdefault(name, value)
+        if not (config.GUEST and name == "X-Frame-Options"):
+            response.headers.setdefault(name, value)
     if response.headers.get("content-type", "").startswith("text/html"):
         frames = " ".join(sorted(plugin_api.frame_sources()))   # only sites whose embed check passed
-        response.headers.setdefault("Content-Security-Policy", PAGE_CSP + "; frame-src 'self'" + (f" {frames}" if frames else ""))
+        csp = PAGE_CSP + "; frame-src 'self'" + (f" {frames}" if frames else "")
+        if config.GUEST:   # the public copy shows inside its page on huggingface.co
+            csp = csp.replace("frame-ancestors 'none'", "frame-ancestors 'self' https://huggingface.co")
+        response.headers.setdefault("Content-Security-Policy", csp)
     if not path.startswith(("/api/", "/files/")):
         # The app's own page, script and icons: check for a newer copy every time (a quick 304 when
         # nothing changed), so an update such as a new logo shows up without clearing the browser cache.
         response.headers.setdefault("Cache-Control", "no-cache")
-        signed_in = auth.is_local_request(request) or bool(device) or auth.valid(request.cookies.get(auth.COOKIE))
+        signed_in = config.GUEST or auth.is_local_request(request) or bool(device) or auth.valid(request.cookies.get(auth.COOKIE))
         if signed_in and auth.install_token_required() and not auth.install_ok(request):   # never to the login page
             _set_install_cookie(response, request)
     return response
@@ -193,8 +206,10 @@ async def trusted_host_and_passcode(request: Request, call_next):
 
 def _set_install_cookie(response, request) -> None:
     secure = request.headers.get("x-forwarded-proto", request.url.scheme) == "https"
+    # Guest mode runs inside huggingface.co's frame, where a Strict cookie isn't sent; the Origin check still applies.
+    same_site = "none" if config.GUEST and secure else "strict"
     response.set_cookie(auth.INSTALL_COOKIE, auth.install_token(), max_age=auth.INSTALL_DAYS * 86400, httponly=True,
-                        samesite="strict", secure=secure)
+                        samesite=same_site, secure=secure)
 
 
 @app.post("/api/login")
@@ -242,7 +257,8 @@ WEB_BUILD = _web_build()
 def health():
     from airtac import deps
     return {"status": "ok", "version": __version__, "build": WEB_BUILD, "offline": config.OFFLINE, "brain": llm.describe(),
-            "voice": voice.status(), "user": config.USER_NAME, "missing_packages": deps.missing()}
+            "voice": voice.status(), "user": config.USER_NAME, "missing_packages": [] if config.GUEST else deps.missing(),
+            "guest": config.GUEST, "guest_reset_minutes": config.GUEST_RESET_MINUTES if config.GUEST else 0}
 
 
 @app.post("/api/chat", response_model=ChatResponse)

@@ -1791,3 +1791,9 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .swatch.ocean { background: linear-gradient(135deg, #eef6fb 0 45%, #0b84c6 45% 75%, #38bdf8 75%); }
 .swatch.midnight { background: linear-gradient(135deg, #0a0d1a 0 45%, #7c8cff 45% 75%, #a855f7 75%); }
 .swatch.sakura { background: linear-gradient(135deg, #fdf4f6 0 45%, #d6336c 45% 75%, #f472b6 75%); }
+
+/* Guest mode (the public try-it copy): a plain notice across the top. */
+.guest-bar { position: sticky; top: 0; z-index: 60; display: flex; gap: .5rem; align-items: center; padding: .55rem 1rem;
+  background: var(--accent, #e2263b); color: #fff; font-size: .9rem; line-height: 1.4; }
+.guest-bar span { flex: 1; }
+.guest-bar .icon-btn { color: #fff; }

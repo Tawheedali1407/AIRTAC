@@ -175,9 +175,26 @@ PORT = int(_server.get("port", 8765))
 PASSCODE = secret("AIRTAC_PASSCODE")
 SCHEDULER = bool(_server.get("scheduler", True)) and not os.getenv("AIRTAC_NO_SCHEDULER")
 
+# --- Guest mode: the public try-it copy (deploy/huggingface). Never set on your own PC.
+# Visitors need no passcode, but they never count as "this PC", so every local_only route (vault, keys, devices,
+# Dev tools, plugin switches) stays refused. Plugins that hold personal data or touch accounts are off, uploads are
+# off, and the data folder is wiped every GUEST_RESET_MINUTES. The brain is the keyword rules unless a key is set.
+GUEST = _flag(os.getenv("AIRTAC_GUEST"))
+GUEST_RESET_MINUTES = int(os.getenv("AIRTAC_GUEST_RESET_MINUTES", "60"))
+GUEST_OFF = ["passwords", "apikeys", "connectors", "account", "accounts", "devtools", "repos", "reverse", "backup",
+             "dictation", "attachments", "knowledge", "ccplugins", "agentreach", "github", "telegram", "email",
+             "phone", "finder", "music", "system", "imagegen", "home", "vision", "wakeword", "social", "youtube"]
+# Extra host names from the environment, e.g. ".hf.space" (a leading dot allows every name ending with it).
+TRUSTED_HOSTS += [h.strip().lower() for h in os.getenv("AIRTAC_TRUSTED_HOSTS", "").split(",") if h.strip()]
+
+
+def host_trusted(host: str) -> bool:
+    host = host.lower()
+    return any(host == h or (h.startswith(".") and host.endswith(h)) for h in TRUSTED_HOSTS)
+
 # --- Plugins
 PLUGINS_ENABLED = _plugins.get("enabled")            # None = every plugin that can run
-PLUGINS_DISABLED = list(_plugins.get("disabled", []))
+PLUGINS_DISABLED = list(_plugins.get("disabled", [])) + (GUEST_OFF if GUEST else [])
 
 # --- Paths (your data stays in data/, outputs/ and workspace/, all gitignored)
 DATA_DIR = ROOT / "data"

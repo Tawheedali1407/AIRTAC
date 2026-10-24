@@ -17,6 +17,16 @@ Local models through Ollama, cloud brains only when you add a key. Your data sta
 
 ---
 
+## Try it live
+
+**[▶ Open AIRTAC Advance in your browser](https://tawheedali1407-airtac.hf.space)**, no install needed.
+
+The public copy runs in a locked-down guest mode on Hugging Face Spaces: it's shared by every visitor and erased every hour,
+answers use simple keyword rules instead of a real model, and anything personal (passwords, API keys, accounts,
+uploads, your PC) is switched off. Install it on your own laptop for the full assistant.
+
+---
+
 ## Watch it work (2:43)
 
 **[▶ AIRTAC Advance walkthrough: every mode in under 3 minutes](docs/media/airtac-advance-walkthrough.mp4)**
@@ -85,6 +95,12 @@ flowchart LR
 | **DevOps & testing** | pytest (570+ offline tests), GitHub Actions (Android APK build), Playwright (UI checks), Git, MCP server (links to coding agents) |
 
 ---
+
+## Host your own public copy
+
+`deploy/huggingface/` has everything for a free Hugging Face Space (Docker): create a Space with the **Docker** SDK and
+add `deploy/huggingface/Dockerfile` and `deploy/huggingface/README.md` to it. It builds from this GitHub repo and starts
+in guest mode (`AIRTAC_GUEST=1`, see `airtac/guest.py`).
 
 ## Install (Windows)
 

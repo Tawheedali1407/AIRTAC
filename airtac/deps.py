@@ -20,6 +20,16 @@ def missing(path: Path | None = None) -> list[str]:
     except OSError:
         lines = []
     for line in lines:
+        # `winotify==1.1.0; sys_platform == "win32"`: a package for another system isn't missing here.
+        code, _, marker = line.split("#")[0].partition(";")
+        if marker.strip():
+            try:
+                from packaging.markers import Marker
+                if not Marker(marker.strip()).evaluate():
+                    continue
+            except Exception:
+                pass
+        line = code
         m = re.match(r"^\s*([A-Za-z0-9][A-Za-z0-9._-]*)\s*(\[[^\]]*\])?\s*(==|>=|~=|$)", line.split("#")[0])
         if not m or not m.group(1):
             continue
