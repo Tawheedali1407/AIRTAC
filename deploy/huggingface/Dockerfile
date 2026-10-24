@@ -18,7 +18,7 @@ ENV AIRTAC_GUEST=1 \
     AIRTAC_LLM=mock \
     AIRTAC_NO_LAN=1 \
     AIRTAC_SKIP_DOTENV=1 \
-    AIRTAC_TRUSTED_HOSTS=.hf.space \
+    AIRTAC_TRUSTED_HOSTS=.hf.space,airtacadvance.netlify.app \
     AIRTAC_GUEST_RESET_MINUTES=60
 
 EXPOSE 7860

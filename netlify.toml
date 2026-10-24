@@ -1,0 +1,12 @@
+# AIRTAC Advance is a Python (FastAPI) server, which Netlify can't run. This site is a front door to the
+# public guest copy on Hugging Face Spaces (deploy/huggingface/): every request, the page included, is passed
+# through so the server can set the cookies its API checks for.
+[build]
+  publish = "web"
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "https://tawheedali1407-airtac.hf.space/:splat"
+  status = 200
+  force = true
