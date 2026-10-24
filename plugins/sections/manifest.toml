@@ -1,0 +1,15 @@
+id = "sections"
+name = "Sections"
+version = "0.1.0"
+icon = "grid"
+about = "Your own sections (Settings > Sections): a name, an icon, instructions, and which plugins and documents it uses. Each one opens as a chat."
+order = 3
+keywords = []
+quick = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

@@ -1,0 +1,16 @@
+id = "daily"
+name = "Your day"
+version = "0.1.0"
+icon = "calendar"
+about = "The morning AI briefing (only real, fetched news, with links), today's plan around your classes, and an evening check-in."
+order = 7
+action = "daily"            # the app page: briefing, plan for today, check-in, settings
+keywords = ["briefing", "ai news today", "plan my day", "today's plan", "check-in", "check in", "weekly review"]
+quick = ["Plan my day", "What's in my AI briefing?", "Weekly review of my plan"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["news.google.com"]   # Google News RSS for today's news by topic; HN and arXiv come through the News plugin
+risk = "local"

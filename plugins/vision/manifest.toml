@@ -1,0 +1,23 @@
+id = "vision"
+name = "Vision"
+version = "0.0.0"
+icon = "eye"
+about = "Gestures and the camera: wave to stop speaking, show a page to read it."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 230
+
+[plan]
+steps = [
+    "MediaPipe hand landmarks (Apache-2.0) for a few gestures: stop, next, scroll.",
+    "Read text from a photo with a vision model (qwen3.5 can read images) or Tesseract OCR.",
+    "Camera stays off until you turn it on; nothing is recorded or stored.",
+]
+packages = ["mediapipe (Apache-2.0)", "opencv-python (Apache-2.0)"]
+risk = "local"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

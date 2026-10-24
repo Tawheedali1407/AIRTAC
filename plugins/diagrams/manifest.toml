@@ -1,0 +1,16 @@
+id = "diagrams"
+name = "Diagrams"
+version = "0.1.0"
+icon = "tree"
+about = "Exact diagrams of arrays, trees, graphs, stacks and queues for notes and exams, plus AI illustrations (with a Nebius key)."
+order = 60
+keywords = ["draw", "diagram", "picture", "tree", "graph", "stack", "queue", "linked list", "two pointers"]
+quick = ["Draw a diagram of two pointers", "Draw a binary tree 8 4 12 2 6 10 14", "Draw a graph for bfs"]
+
+[requires]
+imports = ["PIL"]
+pip = ["Pillow"]
+
+[permissions]
+network = ["api.tokenfactory.nebius.com"]   # only for AI illustrations, only with your NEBIUS_API_KEY
+risk = "local"

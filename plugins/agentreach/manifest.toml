@@ -1,0 +1,16 @@
+id = "agentreach"
+name = "Agent Reach"
+version = "0.1.0"
+icon = "globe"
+about = "Read a web page, a tweet, a Reddit thread or a YouTube video as clean text the AI can use."
+order = 16
+app = false
+keywords = ["read", "tweet", "twitter", "reddit", "youtube", "thread", "post", "article", "page", "this link", "summarise this"]
+quick = ["Read this YouTube video: <link>"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["r.jina.ai"]      # Jina Reader: turns a public page into clean text, no key
+risk = "read"

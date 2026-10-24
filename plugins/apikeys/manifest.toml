@@ -1,0 +1,20 @@
+id = "apikeys"
+name = "APIs and keys"
+version = "0.1.0"
+icon = "key"
+about = "Search, dev, cloud and hackathon API keys in the vault, each with a Test button, plus your own custom keys."
+order = 90
+always = true
+app = false                 # its cards live on the APIs and keys page (Connections), not an app page
+keywords = []
+
+[requires]
+imports = ["cryptography"]
+
+[permissions]
+# Only the services whose Test button makes one read-only call. A custom key's Test goes through the core
+# (airtac/connections.py call_public), which allows public addresses only.
+network = ["api.search.brave.com", "serpapi.com", "context7.com", "api.coderabbit.ai", "nebius.cloud",
+           "hana.ondemand.com", "amazonaws.com", "r2.cloudflarestorage.com", "oauth2.googleapis.com",
+           "storage.googleapis.com", "blob.core.windows.net", "api.dropboxapi.com", "supabase.co"]
+risk = "local"

@@ -1,0 +1,33 @@
+{
+  "_note": "SAMPLE questions for offline testing. Labelled AI-generated style, not checked by a teacher.",
+  "questions": [
+    {"subject": "Data Structures", "unit": "Unit 2", "topic": "Stacks", "type": "mcq", "difficulty": "easy",
+     "question": "Which operation removes the most recently added element of a stack?",
+     "options": ["A. enqueue", "B. pop", "C. peek", "D. dequeue"], "answer": "B. pop",
+     "explanation": "A stack is last-in, first-out (LIFO), and pop removes the top element."},
+    {"subject": "Data Structures", "unit": "Unit 2", "topic": "Queues", "type": "short", "difficulty": "easy",
+     "question": "What is the difference between a stack and a queue?",
+     "answer": "A stack is LIFO (last in, first out); a queue is FIFO (first in, first out).",
+     "explanation": "Stacks add and remove at the same end; queues add at the rear and remove at the front."},
+    {"subject": "Data Structures", "unit": "Unit 2", "topic": "Linked lists", "type": "short", "difficulty": "medium",
+     "question": "Why is inserting at the head of a singly linked list O(1)?",
+     "answer": "Only the new node's next pointer and the head pointer change, whatever the list's length.",
+     "explanation": "No traversal is needed, so the work does not grow with n."},
+    {"subject": "Data Structures", "unit": "Unit 2", "topic": "Queues", "type": "mcq", "difficulty": "medium",
+     "question": "A circular queue of size 5 has front = 3 and rear = 1. How many elements does it hold (one slot kept empty)?",
+     "options": ["A. 2", "B. 3", "C. 4", "D. 5"], "answer": "B. 3",
+     "explanation": "Count = (rear − front + size) mod size = (1 − 3 + 5) mod 5 = 3."},
+    {"subject": "Data Structures", "unit": "Unit 2", "topic": "Stacks", "type": "long", "difficulty": "medium",
+     "question": "Explain how a stack is used to check balanced parentheses, with an example.",
+     "answer": "Push each opening bracket. For each closing bracket, the top must be its matching opener, which is popped. The string is balanced if the stack is empty at the end. Example: '([])' pushes ( then [, pops [ for ], pops ( for ), ends empty, so it is balanced.",
+     "explanation": "The most recent unmatched opener must close first, which is exactly LIFO order."},
+    {"subject": "Data Structures", "unit": "Unit 1", "topic": "Time and space complexity", "type": "mcq", "difficulty": "easy",
+     "question": "What is the time complexity of binary search on a sorted array of n elements?",
+     "options": ["A. O(n)", "B. O(log n)", "C. O(n log n)", "D. O(1)"], "answer": "B. O(log n)",
+     "explanation": "Each step halves the search range, so about log₂ n steps are needed."},
+    {"subject": "Data Structures", "unit": "Unit 3", "topic": "Tree traversals", "type": "short", "difficulty": "easy",
+     "question": "Which traversal of a binary search tree prints keys in sorted order?",
+     "answer": "In-order traversal (left, root, right).",
+     "explanation": "In a BST every left key ≤ root ≤ every right key, so left-root-right visits keys in order."}
+  ]
+}

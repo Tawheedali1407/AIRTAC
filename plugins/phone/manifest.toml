@@ -1,0 +1,24 @@
+id = "phone"
+name = "Phone"
+version = "0.0.0"
+icon = "phone"
+about = "Control your Android phone from AIRTAC: open apps, read notifications, start calls."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 200
+
+[plan]
+steps = [
+    "Install Android platform-tools (adb) and turn on USB or wireless debugging on the phone.",
+    "Tools: phone_open_app, phone_call (device risk: always confirm), phone_notifications (read).",
+    "Mirror the screen with scrcpy (Apache-2.0) when you need to see it.",
+    "Later: a small companion over Tailscale instead of a cable.",
+]
+packages = ["adb (Android platform-tools)", "scrcpy (Apache-2.0)"]
+risk = "device"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "device"

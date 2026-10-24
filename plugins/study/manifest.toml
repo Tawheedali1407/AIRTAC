@@ -1,0 +1,16 @@
+id = "study"
+name = "Study"
+version = "0.1.0"
+icon = "book"
+about = "Your syllabus, practice questions made from it, and study PDFs. AIRTAC never invents a syllabus."
+order = 20
+action = "syllabus"         # the app page shows the "Add your syllabus" button
+keywords = ["syllabus", "unit", "questions", "mcq", "quiz", "study pdf", "exam questions", "revision"]
+quick = ["Make 5 questions from unit 2", "Make 5 mcq questions from unit 1", "Make a study PDF with answers"]
+
+[requires]
+imports = ["pypdf"]
+
+[permissions]
+network = []
+risk = "local"

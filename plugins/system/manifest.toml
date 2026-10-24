@@ -1,0 +1,15 @@
+id = "system"
+name = "System"
+version = "0.1.0"
+icon = "chip"
+about = "Battery, memory, processor and disk, and which AI model is loaded right now."
+order = 70
+keywords = ["battery", "ram", "cpu", "processor", "disk", "laptop", "system", "memory usage", "storage"]
+quick = ["How's my laptop doing?", "How much battery is left?"]
+
+[requires]
+imports = ["psutil"]
+
+[permissions]
+network = []                # it only asks Ollama on this laptop which model is loaded
+risk = "local"

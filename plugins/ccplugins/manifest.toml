@@ -1,0 +1,15 @@
+id = "ccplugins"
+name = "Claude Code plugins"
+version = "0.1.0"
+icon = "puzzle"
+about = "The Claude Code plugins Ali asked about: where each one really lives, what it may reach, and how to add it. Switch them on or off."
+order = 89
+app = false                 # shown on Brains and plugins
+keywords = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

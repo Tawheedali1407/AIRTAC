@@ -1,0 +1,17 @@
+id = "memory"
+name = "Memory"
+version = "0.1.0"
+icon = "pin"
+about = "Things you asked AIRTAC to remember, reminders with alerts, and PDFs from your notes."
+order = 15
+always = true               # its tools are offered with every question
+keywords = ["remember", "remind", "reminder", "recall", "what did i", "pdf", "note", "notes"]
+quick = ["What did I tell you?", "Remember my exam is on 12 Nov", "Remind me to pay the exam fee tomorrow at 6 pm"]
+
+[requires]
+imports = []
+plugins = ["schedule"]      # reminders with a date go on the schedule
+
+[permissions]
+network = []
+risk = "local"

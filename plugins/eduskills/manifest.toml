@@ -1,0 +1,18 @@
+id = "eduskills"
+name = "EduSkills"
+version = "0.1.0"
+icon = "badge"
+about = "Your AICTE-EduSkills virtual internships: dates and reminders, modules, score, certificate, learning log and the college report."
+order = 38
+keywords = ["eduskills", "virtual internship", "aicte", "cohort", "internship report", "certificate", "modules",
+            "palo alto", "cybersecurity", "aws", "juniper", "microchip"]
+quick = ["How are my EduSkills internships going?", "Add my EduSkills Cybersecurity internship starting 1 Dec to 31 Jan",
+         "EduSkills log: finished the firewall basics module", "Make my internship report", "EduSkills steps"]
+
+[requires]
+imports = []
+plugins = ["schedule", "documents"]   # dates go on the schedule; the report is a Word file
+
+[permissions]
+network = ["eduskillsfoundation.org"]   # only to read the official site for cohort news
+risk = "local"

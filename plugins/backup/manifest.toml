@@ -1,0 +1,17 @@
+id = "backup"
+name = "Backup"
+version = "0.1.0"
+icon = "cloud"
+about = "A nightly zip of your data on this laptop, and an encrypted copy on your own cloud drive with rclone."
+order = 90
+keywords = ["backup", "back up", "restore", "cloud", "drive", "sync"]
+quick = ["Back up my data", "Upload my backup to the cloud"]
+
+[requires]
+imports = []
+tools = ["rclone (optional, for the cloud copy)"]
+
+[permissions]
+network = []                # rclone does the upload, to the remote you configure
+files = ["backups/"]
+risk = "write"              # the cloud upload sends your data off this laptop: it waits for Confirm

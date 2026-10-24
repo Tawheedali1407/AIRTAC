@@ -1,0 +1,15 @@
+id = "dictation"
+name = "Dictation"
+version = "0.1.0"
+icon = "mic"
+about = "Hold a key anywhere in Windows, speak, and the words are typed where your cursor is. Whisper on this PC: your voice never leaves it."
+order = 40
+keywords = []
+quick = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

@@ -1,0 +1,12 @@
+{
+  "_note": "SAMPLE DATA: well-known real papers on agents and LLMs, not today's arXiv feed.",
+  "papers": [
+    {"id": "2405.15793", "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering", "authors": ["John Yang", "Carlos E. Jimenez", "et al."], "published": "2024-05", "summary": "Shows that a custom interface between a language model agent and the computer greatly improves its ability to fix real GitHub issues."},
+    {"id": "2305.16291", "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models", "authors": ["Guanzhi Wang", "et al."], "published": "2023-05", "summary": "An LLM-powered agent that keeps learning skills in Minecraft using an automatic curriculum and a growing skill library of code."},
+    {"id": "2304.03442", "title": "Generative Agents: Interactive Simulacra of Human Behavior", "authors": ["Joon Sung Park", "et al."], "published": "2023-04", "summary": "Agents with memory, reflection and planning that simulate believable daily human behaviour in a small town."},
+    {"id": "2303.11366", "title": "Reflexion: Language Agents with Verbal Reinforcement Learning", "authors": ["Noah Shinn", "et al."], "published": "2023-03", "summary": "Agents improve by writing short reflections on their failures and reading them on the next attempt, without changing model weights."},
+    {"id": "2302.04761", "title": "Toolformer: Language Models Can Teach Themselves to Use Tools", "authors": ["Timo Schick", "et al."], "published": "2023-02", "summary": "A language model learns when and how to call external tools such as a calculator or search engine through self-supervised training."},
+    {"id": "2210.03629", "title": "ReAct: Synergizing Reasoning and Acting in Language Models", "authors": ["Shunyu Yao", "et al."], "published": "2022-10", "summary": "Interleaves reasoning traces with tool actions so the agent can plan, act and update its plan from what it observes."},
+    {"id": "2005.11401", "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks", "authors": ["Patrick Lewis", "et al."], "published": "2020-05", "summary": "Combines a retriever over a document index with a generator so answers are grounded in retrieved passages."}
+  ]
+}

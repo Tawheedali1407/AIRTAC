@@ -1,0 +1,8 @@
+{
+  "_note": "SAMPLE DATA: three canned results returned for any query until a Tavily key is set.",
+  "results": [
+    {"title": "Nebius Token Factory", "url": "https://nebius.com/", "content": "Nebius Token Factory serves open models such as NVIDIA Nemotron through an OpenAI-compatible API."},
+    {"title": "NVIDIA Nemotron models", "url": "https://developer.nvidia.com/", "content": "Nemotron is NVIDIA's family of open models built for agentic tasks like reasoning and tool calling."},
+    {"title": "FastAPI documentation", "url": "https://fastapi.tiangolo.com/", "content": "FastAPI is a Python web framework for building APIs with type hints and automatic validation."}
+  ]
+}

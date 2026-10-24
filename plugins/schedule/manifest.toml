@@ -1,0 +1,21 @@
+id = "schedule"
+name = "Schedule"
+version = "0.1.0"
+icon = "calendar"
+about = "Exams, deadlines and plans. Reminds you before things start and reads out your day."
+status = "ready"
+order = 10
+always = true               # its tools are offered with every question
+action = "schedule"         # the app page shows the schedule editor
+keywords = ["schedule", "calendar", "deadline", "deadlines", "exam", "remind", "reminder", "today", "tomorrow",
+            "this week", "plan", "internship", "gsoc", "brief", "my day"]
+quick = ["Brief me on my day", "What's on my schedule this week?", "What's my summer internship schedule?",
+         "Add DBMS exam on 14 Nov to my schedule"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["calendar.google.com"]   # only to import festivals and public holidays (Google's public "Holidays in India" calendar)
+files = []
+risk = "local"

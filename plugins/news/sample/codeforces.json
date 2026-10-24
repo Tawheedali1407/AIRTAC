@@ -1,0 +1,12 @@
+{
+  "_note": "SAMPLE DATA shaped like the Codeforces contest.list API. Contest names and times are made up.",
+  "status": "OK",
+  "result": [
+    {"id": 9905, "name": "Codeforces Round (Div. 1 + Div. 2) [sample]", "phase": "BEFORE", "durationSeconds": 9000, "startTimeSeconds": 1793025300},
+    {"id": 9904, "name": "Codeforces Round (Div. 3) [sample]", "phase": "BEFORE", "durationSeconds": 8100, "startTimeSeconds": 1792679700},
+    {"id": 9903, "name": "Educational Codeforces Round (Rated for Div. 2) [sample]", "phase": "BEFORE", "durationSeconds": 7200, "startTimeSeconds": 1792247700},
+    {"id": 9902, "name": "Codeforces Round (Div. 2) [sample]", "phase": "BEFORE", "durationSeconds": 7200, "startTimeSeconds": 1791902100},
+    {"id": 9901, "name": "Codeforces Round (Div. 4) [sample]", "phase": "BEFORE", "durationSeconds": 8100, "startTimeSeconds": 1791642900},
+    {"id": 9900, "name": "Codeforces Round (Div. 2) [sample, finished]", "phase": "FINISHED", "durationSeconds": 7200, "startTimeSeconds": 1791297300}
+  ]
+}

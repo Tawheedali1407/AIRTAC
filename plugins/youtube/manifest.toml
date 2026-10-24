@@ -1,0 +1,22 @@
+id = "youtube"
+name = "YouTube"
+version = "0.0.0"
+icon = "play"
+about = "Find videos for a topic and summarise them from their transcripts."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 260
+
+[plan]
+steps = [
+    "Search with yt-dlp (Unlicense) and read the captions.",
+    "Summaries with sources and timestamps; open the video in your browser.",
+]
+packages = ["yt-dlp (Unlicense)"]
+risk = "read"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "read"

@@ -1,0 +1,16 @@
+id = "perplexity"
+name = "Perplexity"
+version = "0.1.0"
+icon = "globe"
+about = "Answers from the web with sources, through your Perplexity API key (Sonar)."
+order = 14
+app = false
+keywords = ["perplexity", "sonar", "with sources", "cite", "citations", "latest news on"]
+quick = ["Ask Perplexity what changed in Python 3.14"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["api.perplexity.ai"]
+risk = "read"

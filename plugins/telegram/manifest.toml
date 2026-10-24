@@ -1,0 +1,23 @@
+id = "telegram"
+name = "Telegram"
+version = "0.0.0"
+icon = "send"
+about = "Talk to AIRTAC from Telegram when you're away from the laptop."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 210
+
+[plan]
+steps = [
+    "Create a bot with @BotFather and put TELEGRAM_BOT_TOKEN in .env.",
+    "Only your own Telegram user id may talk to it (allowlist in config).",
+    "Messages go through the same agent, with the same Confirm rule for write tools (a yes/no button).",
+]
+packages = ["python-telegram-bot (LGPL-3.0)"]
+risk = "write"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "write"

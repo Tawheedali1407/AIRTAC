@@ -1,0 +1,15 @@
+id = "connectors"
+name = "Connectors"
+version = "0.1.0"
+icon = "plug"
+about = "Your apps, like Claude's connectors: Gmail, Google Calendar, Google Drive, GitHub and Notion, added from the Connectors page."
+order = 12
+keywords = ["gmail", "email", "inbox", "mail", "google calendar", "calendar", "drive", "google drive", "notion", "doc", "docs"]
+quick = ["Any important emails today?", "What's on my Google Calendar this week?", "Find my DBMS notes in Drive"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["gmail.googleapis.com", "www.googleapis.com", "oauth2.googleapis.com", "api.notion.com"]
+risk = "read"

@@ -1,0 +1,10 @@
+{
+  "_note": "SAMPLE syllabus for offline testing. Ali supplies the real one; AIRTAC never invents a syllabus.",
+  "subject": "Data Structures",
+  "units": [
+    {"unit": "Unit 1", "topics": ["Arrays", "Time and space complexity", "Recursion"]},
+    {"unit": "Unit 2", "topics": ["Stacks", "Queues", "Linked lists"]},
+    {"unit": "Unit 3", "topics": ["Binary trees", "Binary search trees", "Tree traversals"]},
+    {"unit": "Unit 4", "topics": ["Graphs", "BFS and DFS", "Hashing"]}
+  ]
+}

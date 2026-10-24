@@ -1,0 +1,153 @@
+# AIRTAC Advance settings. Secrets (API keys, tokens) never go here: they go in .env.
+# Restart AIRTAC after changing this file.
+
+[general]
+user_name = "Ali"
+language = "en-IN"          # speech recognition and voice
+
+[llm]
+# The brain. "ollama" runs an open model on this laptop (https://ollama.com).
+# "nebius" is NVIDIA Nemotron 3 Super on Nebius Token Factory, the hackathon brain (needs NEBIUS_API_KEY
+# in .env and the internet). "openai" is any OpenAI-compatible server: LM Studio, llama.cpp, vLLM.
+# "mock" uses keyword rules: no model at all, handy for testing.
+provider = "ollama"
+base_url = "http://localhost:11434"
+model = "nemotron-3-nano:4b" # NVIDIA Nemotron 3 Nano 4B: tools and reasoning, 2.8 GB, NVIDIA Open Model License
+fallback = "qwen3.5:4b"     # used automatically if the model above isn't downloaded (Apache-2.0)
+api_key_env = ""            # e.g. "NEBIUS_API_KEY" for provider = "openai" with a hosted model
+think = false               # thinking mode is slower on a CPU; turn on for hard questions
+num_ctx = 4096              # context window: bigger needs more RAM
+timeout = 120               # seconds; a 4B model on an i3 can take a while
+# The chat (Chat page and Home): a model that hasn't started answering in chat_first_token_seconds, or
+# isn't done in chat_total_seconds, is stopped with a message (and the cloud brains are offered).
+chat_first_token_seconds = 45
+chat_total_seconds = 90
+chat_keep_alive = "2m"      # Ollama frees the model's memory after 2 idle minutes
+chat_num_ctx = 3072         # smaller than num_ctx: starts sooner on the i3 (Work mode keeps num_ctx)
+max_tools = 12              # how many tools the model sees per question (small models do better with fewer)
+
+[brains]
+# Which model answers which kind of question. Empty = the model above. Pull a model first:
+#   ollama pull qwen2.5-coder:7b      (or run scripts\models.ps1, which picks for your RAM)
+# Only one model is loaded at a time, so 8 GB of RAM is enough for all of them.
+coding = ""                 # e.g. "qwen2.5-coder:7b" (stronger code, slower) or "qwen2.5-coder:1.5b"
+reasoning = ""              # engineering and maths: the model above with thinking on. For the big cloud
+                            # Nemotron: "nebius:nvidia/nemotron-3-super-120b-a12b" (needs NEBIUS_API_KEY)
+medical = ""                # e.g. "hf.co/unsloth/medgemma-4b-it-GGUF:Q4_K_M" (learning only, not diagnosis)
+embed = "nomic-embed-text"  # for the knowledge library; "" = keyword search only
+
+[failover]
+# Cloud brains, tried in this order before the model on your PC. A tier is used only when its key is
+# saved on the Connections page (or in .env). Any other provider you add a key for is tried after
+# these (free ones first, then paid: huggingface, deepseek, anthropic, openai, xai). When one runs out
+# of free requests (HTTP 429 or 402) it rests for a while and the next one answers. Ollama on this PC
+# is always the last stop, so AIRTAC keeps working offline. With no keys, nothing leaves the PC.
+# "gemini" and "mistral" join only if you list them here: their free tiers may train on what you send.
+# skip = ["openai"]         # providers never to use automatically (you can still pick them in the chat)
+enabled = true
+# Ali, 17 Oct: Gemini answers whenever the model on this PC can't (local_first). Google's free tier may train on what you send.
+order = ["gemini", "groq", "nebius", "nvidia", "openrouter"]
+local_first = true          # this PC's model first; the brains above only when it can't answer (and it rests 2 minutes)
+cooldown_seconds = 600      # how long a tier rests after hitting its limit (unless it says Retry-After)
+timeout = 45                # seconds before a slow cloud tier is skipped
+
+[failover.models]
+# Optional: a different model per tier. Check each service's model list before changing.
+groq = "openai/gpt-oss-120b"
+nebius = "nvidia/nemotron-3-super-120b-a12b"
+nvidia = "nvidia/nemotron-3-super-120b-a12b"
+openrouter = "nvidia/nemotron-3-super-120b-a12b:free"
+gemini = "gemini-3.8-flash"
+huggingface = "openai/gpt-oss-120b"
+cerebras = "gpt-oss-120b"
+cohere = "command-a-03-2025"
+zai = "glm-4.7-flash"
+mistral = "mistral-small-latest"
+deepseek = "deepseek-flash"
+anthropic = "claude-haiku-5-5"
+openai = "gpt-5-mini"
+xai = "grok-4.7"
+
+[voice]
+# "browser": the browser's own speech (simple; Chrome/Edge send audio to their cloud).
+# "local": faster-whisper and Piper on this laptop (private; install with scripts\plugins.ps1 voice).
+stt = "browser"
+tts = "browser"
+whisper_model = "base.en"   # tiny.en is faster, small.en is better; all run on the CPU
+piper_voice = ""            # path to a Piper .onnx voice, e.g. models\piper\en_US-lessac-medium.onnx
+
+[server]
+port = 8765
+# Names AIRTAC answers to. To use it from your phone, add your laptop's Tailscale name here
+# (e.g. "ali-laptop.tail1234.ts.net") and set a passcode on the Connections page. See docs/PHONE_AND_PC.md.
+trusted_hosts = ["localhost", "127.0.0.1", "[::1]"]
+remote_per_hour = 120       # requests that use a brain, per other device (your phone) per hour
+remote_per_day = 800        # the same, all other devices together per day; this PC has no limit
+scheduler = true            # reminders and the morning briefing run in the background
+
+[plugins]
+# Leave "enabled" out to turn on every plugin whose packages are installed.
+# enabled = ["schedule", "memory", "practice", "study"]
+disabled = []
+
+[plugins.schedule]
+morning_briefing = "07:30"  # a notification with your day; "" to turn off
+remind_before_minutes = 15
+auto_from_chat = true       # a date you mention ("my DBMS exam is on 14 Nov") goes on your schedule, with Undo
+
+[plugins.github]
+user = "Tawheedali1407"
+default_repo = "airtac"
+
+[plugins.leetcode]
+user = "MMDTAWHEEDALI"      # the username from your profile URL
+
+[plugins.diagrams]
+image_model = "black-forest-labs/flux-schnell"   # AI illustrations on Nebius (only with NEBIUS_API_KEY)
+images_per_day = 10
+
+[plugins.accounts]
+# Public usernames only (the part after /u/ or /users/ in your profile address). Never put a password here.
+# You can also set them on the Accounts page; what you type there wins.
+usernames = { codechef = "", gfg = "" }
+
+[plugins.news]
+topic = "LLM agents"
+city = ""                   # needs a Tavily key in .env
+
+[plugins.music]
+folder = ""                 # e.g. "C:\\Users\\Ali\\Music"; empty means your Music folder
+
+[plugins.desktop]
+# Apps AIRTAC may open. Only these, and only after you press Confirm.
+apps = { notepad = "notepad.exe", calculator = "calc.exe", explorer = "explorer.exe", "vs code" = "code", edge = "msedge" }
+websites = { github = "https://github.com", leetcode = "https://leetcode.com", youtube = "https://www.youtube.com" }
+# Sites open in Google Chrome with AIRTAC's own profile (data\chrome_profile), so your logins stay.
+use_chrome_profile = true
+chrome = ""                 # leave empty to find chrome.exe; or give its full path
+# Tiles on Home that open straight away when you tap them on this PC.
+tiles = { YouTube = "https://www.youtube.com", Instagram = "https://www.instagram.com", Google = "https://www.google.com" }
+# AI apps: 34 are built in (plugins/desktop/ai_apps.json); Home shows the pinned ones.
+# Your own AI apps, added to the catalog (or use "Add an app" on the AI apps page):
+# ai_tiles = { "My tool" = "https://example.com" }
+
+[plugins.web]
+searxng_url = ""            # your own SearXNG server, e.g. "http://localhost:8888" (tried first)
+region = "in-en"            # DuckDuckGo region
+
+[plugins.backup]
+time = "22:00"              # a backup zip on this laptop every night; "" to turn off
+keep = 7                    # how many to keep
+include_outputs = true      # the PDFs and documents AIRTAC made
+include_knowledge = false   # your library can be big; it's your own files anyway
+remote = ""                 # an rclone remote for the cloud copy, e.g. "gdrive-crypt:AIRTAC"
+auto_upload = false         # true = copy to the cloud every night without asking
+
+[plugins.coach]
+review_day = "Sunday"       # the weekly self-review: what went wrong, lessons to approve
+review_time = "20:00"
+
+[plugins.eduskills]
+student = "Ali"                    # your full name for the internship report
+college = "RGM College, Nandyal"
+

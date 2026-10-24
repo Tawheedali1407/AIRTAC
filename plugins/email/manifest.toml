@@ -1,0 +1,23 @@
+id = "email"
+name = "Email"
+version = "0.0.0"
+icon = "mail"
+about = "Read and draft email. Sending always waits for your Confirm."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 250
+
+[plan]
+steps = [
+    "IMAP to read (an app password, stored in .env), SMTP to send.",
+    "Summarise unread mail each morning in your briefing.",
+    "Drafts are shown in full before anything is sent.",
+]
+packages = ["Python's own imaplib and smtplib"]
+risk = "write"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "write"

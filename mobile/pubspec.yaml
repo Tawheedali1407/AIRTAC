@@ -1,0 +1,33 @@
+name: airtac_mobile
+description: "Airtac Mobile: Ali's AIRTAC Advance on his Android phone. Talks to the PC over HTTPS with a pinned certificate."
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.41.0"
+
+# Every version below was checked on 18 Oct 2026 against the package's own repository (release tag or changelog).
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.7                         # SHA-256 of the PC's certificate (the pin) and the pairing nonce (BSD-3)
+  flutter_secure_storage: ^11.2.0        # the device token, in Android Keystore (BSD-3)
+  mobile_scanner: ^7.4.1                 # scans the pairing QR code (BSD-3)
+  flutter_inappwebview: ^6.1.5           # the full AIRTAC page for everything without a native screen (Apache-2.0)
+  flutter_local_notifications: ^22.3.2   # schedule reminders on the phone (BSD-3)
+  timezone: ^0.11.0                      # the reminders' times (BSD-2)
+  flutter_tts: ^4.2.5                    # Android's text-to-speech for lectures and the briefing (MIT)
+  receive_sharing_intent: ^1.9.0         # "Share to Airtac" from other apps (Apache-2.0)
+  local_auth: ^3.0.2                     # fingerprint / face to open the app (BSD-3)
+  google_sign_in: ^7.2.0                 # only when the PC is signed in to Google: pairing checks it's the same account (BSD-3)
+  shared_preferences: ^2.5.6             # chat history and the offline queue on the phone (BSD-3)
+  url_launcher: ^6.3.3                   # opens app links in their own apps (BSD-3)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

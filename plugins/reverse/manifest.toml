@@ -1,0 +1,15 @@
+id = "reverse"
+name = "Reverse engineer anything"
+version = "0.1.0"
+icon = "code"
+about = "Point it at a GitHub repo or a website: how it works, its tech stack, its licence, and a step-by-step plan to build your own AI or app like it."
+order = 6
+keywords = ["reverse engineer", "how is it built", "how was it built", "build my own", "clone", "find a repo"]
+quick = ["Reverse engineer https://github.com/ollama/ollama", "How is https://www.perplexity.ai built?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["api.github.com", "raw.githubusercontent.com", "codeload.github.com"]   # codeload: the zip when Git is missing
+risk = "read"

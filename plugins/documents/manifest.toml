@@ -1,0 +1,18 @@
+id = "documents"
+name = "Documents"
+version = "0.1.0"
+icon = "pdf"
+about = "Word documents, PowerPoint slides and Excel sheets, made on your laptop."
+order = 35
+keywords = ["document", "word", "docx", "slides", "presentation", "ppt", "pptx", "deck", "spreadsheet", "excel",
+            "xlsx", "sheet", "table"]
+quick = ["Make slides about two pointers", "Make a Word document about my internship plan",
+         "Make a spreadsheet of my monthly budget"]
+
+[requires]
+imports = ["docx", "pptx", "openpyxl"]
+pip = ["python-docx", "python-pptx", "openpyxl"]
+
+[permissions]
+network = []
+risk = "local"

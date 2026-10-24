@@ -1,0 +1,15 @@
+id = "desktop"
+name = "Desktop"
+version = "0.1.0"
+icon = "monitor"
+about = "Open your apps and saved websites by voice. Only the ones you allow, and only after you confirm."
+order = 80
+keywords = ["open", "launch", "start", "app", "notepad", "calculator", "vs code", "browser", "website"]
+quick = ["Open notepad", "Open GitHub"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "device"             # opens things on your computer: always waits for your Confirm

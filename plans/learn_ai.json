@@ -1,0 +1,669 @@
+{
+ "name": "Become an AI expert",
+ "source": "Ali's AGI engineering roadmap (Gemini, 17 Oct 2026) merged with the Summer 2027 prep plan. Full text: docs/ROADMAP_AGI.md",
+ "start": "2026-10-18",
+ "kickoff": {
+  "date": "2026-10-18",
+  "tasks": [
+   "Make the Failed Problem Log (Problem, Pattern, Mistake) and the GitHub repo from-scratch-to-agi",
+   "Review Two Sum, Valid Palindrome, 3Sum",
+   "NumPy broadcasting and slicing drill",
+   "Read Karpathy, The Unreasonable Effectiveness of Recurrent Neural Networks"
+  ]
+ },
+ "daily_blocks": [
+  {
+   "name": "DSA",
+   "start": "06:30",
+   "end": "07:30",
+   "days": "mon-fri",
+   "what": "2 problems of the week's pattern (25-minute rule)"
+  },
+  {
+   "name": "College",
+   "start": "09:00",
+   "end": "16:30",
+   "days": "mon-fri",
+   "fixed": true,
+   "what": "RGM classes; 30 min of free time: 1 AI paper"
+  },
+  {
+   "name": "Maths, ML and CS core",
+   "start": "19:30",
+   "end": "20:30",
+   "days": "mon-fri",
+   "what": "the week's prep topic"
+  },
+  {
+   "name": "Zero-to-AGI lab",
+   "start": "20:30",
+   "end": "21:15",
+   "days": "mon-fri",
+   "what": "code the week's idea from scratch"
+  },
+  {
+   "name": "Mock + deep build",
+   "start": "10:00",
+   "end": "15:00",
+   "days": "sat-holiday",
+   "what": "60-min timed mock, then GSoC PRs and from-scratch builds"
+  },
+  {
+   "name": "Revision + GitHub",
+   "start": "10:00",
+   "end": "14:00",
+   "days": "sun",
+   "what": "1-7-30 revision, push code, plan the week"
+  }
+ ],
+ "hours": {
+  "wake": "06:00",
+  "sleep": "23:00",
+  "quiet": [
+   "22:30",
+   "06:00"
+  ],
+  "max_study_blocks": 3,
+  "buffer": 0.1
+ },
+ "rules": [
+  "Zero black box: write a 30-line version of every library call you use",
+  "1-7-30 revision: re-solve failed problems the next day, after 7 days and after 30 days",
+  "Paper to code from December: one paper every two weeks, README + minimal notebook",
+  "Build in public: push clean code every Sunday",
+  "Exam Light Mode: only 1 DSA problem a morning, protect the CGPA"
+ ],
+ "stages": [
+  {
+   "id": 1,
+   "title": "Python and maths intuition",
+   "weeks": [
+    3,
+    8
+   ],
+   "goals": [
+    "Linear algebra, probability, statistics, calculus for ML",
+    "70 DSA problems"
+   ],
+   "resources": [
+    {
+     "title": "Mathematics for Machine Learning (free book)",
+     "url": "https://mml-book.com"
+    },
+    {
+     "title": "3Blue1Brown: Essence of linear algebra",
+     "url": "https://www.3blue1brown.com/lessons/eola-preview"
+    }
+   ],
+   "practice": [
+    "Derive one gradient by hand each week"
+   ],
+   "checkpoint": "Your own autograd engine (micrograd) training a small MLP"
+  },
+  {
+   "id": 2,
+   "title": "NumPy and Pandas",
+   "weeks": [
+    3,
+    8
+   ],
+   "goals": [
+    "Broadcasting, vectorisation, groupby/merge"
+   ],
+   "resources": [
+    {
+     "title": "Kaggle Learn: Pandas",
+     "url": "https://www.kaggle.com/learn/pandas"
+    }
+   ],
+   "practice": [
+    "Analyse one Kaggle dataset"
+   ],
+   "checkpoint": "Vectorised NumPy neural network"
+  },
+  {
+   "id": 3,
+   "title": "Classical machine learning",
+   "weeks": [
+    9,
+    12
+   ],
+   "goals": [
+    "Regression, trees, k-NN, k-means, PCA, metrics"
+   ],
+   "resources": [
+    {
+     "title": "scikit-learn user guide",
+     "url": "https://scikit-learn.org/stable/user_guide.html"
+    }
+   ],
+   "practice": [
+    "Decision tree and k-means in raw NumPy"
+   ],
+   "checkpoint": "30 ML MCQs at 80%"
+  },
+  {
+   "id": 4,
+   "title": "Deep learning with PyTorch",
+   "weeks": [
+    11,
+    13
+   ],
+   "goals": [
+    "Backprop, BatchNorm, MNIST"
+   ],
+   "resources": [
+    {
+     "title": "Karpathy: Neural Networks: Zero to Hero",
+     "url": "https://karpathy.ai/zero-to-hero.html"
+    },
+    {
+     "title": "micrograd",
+     "url": "https://github.com/karpathy/micrograd"
+    }
+   ],
+   "practice": [
+    "makemore parts 1-3"
+   ],
+   "checkpoint": "MNIST classifier in PyTorch"
+  },
+  {
+   "id": 5,
+   "title": "NLP, Transformers and LLMs",
+   "weeks": [
+    13,
+    14
+   ],
+   "goals": [
+    "Tokens, embeddings, self-attention, GPT"
+   ],
+   "resources": [
+    {
+     "title": "Attention Is All You Need",
+     "url": "https://arxiv.org/abs/1706.03762"
+    },
+    {
+     "title": "nanoGPT",
+     "url": "https://github.com/karpathy/nanoGPT"
+    }
+   ],
+   "practice": [
+    "Self-attention from scratch"
+   ],
+   "checkpoint": "nanoGPT trained on a small text"
+  },
+  {
+   "id": 6,
+   "title": "RAG, agents, fine-tuning and evaluation",
+   "weeks": [
+    14,
+    21
+   ],
+   "goals": [
+    "Chunking, vector search, ReAct, LoRA"
+   ],
+   "resources": [
+    {
+     "title": "Hugging Face AI Agents Course",
+     "url": "https://huggingface.co/learn/agents-course/unit0/introduction"
+    },
+    {
+     "title": "Kaggle x Google AI Agents Intensive (recap)",
+     "url": "https://blog.google/technology/developers/ai-agents-intensive-recap/"
+    },
+    {
+     "title": "ReAct paper",
+     "url": "https://arxiv.org/abs/2210.03629"
+    },
+    {
+     "title": "LoRA paper",
+     "url": "https://arxiv.org/abs/2106.09685"
+    }
+   ],
+   "practice": [
+    "A NumPy vector index",
+    "A self-critic step in the agent loop"
+   ],
+   "checkpoint": "Agent v1 deployed on Hugging Face Spaces"
+  },
+  {
+   "id": 7,
+   "title": "Capstone projects (AIRTAC, agent v2, GSoC)",
+   "weeks": [
+    16,
+    36
+   ],
+   "goals": [
+    "2-3 merged PRs, GSoC proposal, agent v2"
+   ],
+   "resources": [
+    {
+     "title": "Google Summer of Code",
+     "url": "https://summerofcode.withgoogle.com/"
+    },
+    {
+     "title": "On the Measure of Intelligence (ARC-AGI)",
+     "url": "https://arxiv.org/abs/1911.01547"
+    },
+    {
+     "title": "DeepSeek-R1",
+     "url": "https://arxiv.org/abs/2501.12948"
+    }
+   ],
+   "practice": [
+    "One paper every two weeks, with a notebook"
+   ],
+   "checkpoint": "Project v2 with test-time reasoning and evals"
+  }
+ ],
+ "level_check": [
+  {
+   "q": "What does gradient descent change to reduce the loss?",
+   "options": [
+    "The data",
+    "The weights",
+    "The labels",
+    "The learning rate only"
+   ],
+   "answer": 1,
+   "stage": 1
+  },
+  {
+   "q": "The dot product of [1, 2] and [3, 4] is",
+   "options": [
+    "10",
+    "11",
+    "7",
+    "[3, 8]"
+   ],
+   "answer": 1,
+   "stage": 1
+  },
+  {
+   "q": "P(A|B) by Bayes' theorem equals",
+   "options": [
+    "P(B|A)P(A)/P(B)",
+    "P(A)P(B)",
+    "P(A)+P(B)",
+    "P(B)/P(A)"
+   ],
+   "answer": 0,
+   "stage": 1
+  },
+  {
+   "q": "In NumPy, adding an array of shape (3,1) to one of shape (1,4) gives shape",
+   "options": [
+    "(3,4)",
+    "(1,1)",
+    "error",
+    "(4,3)"
+   ],
+   "answer": 0,
+   "stage": 2
+  },
+  {
+   "q": "A model that is great on training data and poor on test data is",
+   "options": [
+    "Underfitting",
+    "Overfitting",
+    "Regularised",
+    "Converged"
+   ],
+   "answer": 1,
+   "stage": 3
+  },
+  {
+   "q": "Recall is",
+   "options": [
+    "TP/(TP+FP)",
+    "TP/(TP+FN)",
+    "TN/(TN+FP)",
+    "(TP+TN)/all"
+   ],
+   "answer": 1,
+   "stage": 3
+  },
+  {
+   "q": "Backpropagation computes gradients with",
+   "options": [
+    "The chain rule",
+    "Random search",
+    "Sorting",
+    "The Fourier transform"
+   ],
+   "answer": 0,
+   "stage": 4
+  },
+  {
+   "q": "Self-attention lets each token",
+   "options": [
+    "Look only at the previous token",
+    "Weigh every other token in the sequence",
+    "Skip the embedding",
+    "Use no parameters"
+   ],
+   "answer": 1,
+   "stage": 5
+  },
+  {
+   "q": "RAG improves answers by",
+   "options": [
+    "Training a bigger model",
+    "Retrieving relevant documents into the prompt",
+    "Removing the prompt",
+    "Lowering temperature"
+   ],
+   "answer": 1,
+   "stage": 6
+  },
+  {
+   "q": "LoRA fine-tunes a model by",
+   "options": [
+    "Training all weights",
+    "Adding small low-rank matrices",
+    "Deleting layers",
+    "Changing the tokenizer"
+   ],
+   "answer": 1,
+   "stage": 6
+  }
+ ],
+ "weeks": [
+  {
+   "week": 3,
+   "start": "2026-10-19",
+   "dsa": "Sliding window: Max Sum Subarray K, Longest Substring Without Repeating Chars",
+   "prep": "Pandas: load CSV, filter, groupby, merge; analyse 1 Kaggle dataset",
+   "lab": "1-D linear regression + gradient descent in pure Python",
+   "light": false
+  },
+  {
+   "week": 4,
+   "start": "2026-10-26",
+   "dsa": "Hashing revision: Group Anagrams, Subarray Sum = K, Longest Consecutive Sequence",
+   "prep": "Probability 1: permutations, combinations, dice/card problems",
+   "lab": "Entropy, cross-entropy and KL divergence in NumPy",
+   "light": false
+  },
+  {
+   "week": 5,
+   "start": "2026-11-02",
+   "dsa": "Stacks and queues: Valid Parentheses, Min Stack, Next Greater Element",
+   "prep": "Probability 2: conditional probability, Bayes' theorem",
+   "lab": "Backprop from scratch 1: micrograd value object (Karpathy lecture 1)",
+   "light": false
+  },
+  {
+   "week": 6,
+   "start": "2026-11-09",
+   "dsa": "Linked lists: Reverse, Merge Two Sorted, Cycle, Remove Nth",
+   "prep": "Statistics: mean, variance, normal distribution by hand and NumPy",
+   "lab": "Backprop from scratch 2: an MLP on your autograd engine",
+   "light": false
+  },
+  {
+   "week": 7,
+   "start": "2026-11-16",
+   "dsa": "Recursion and binary search: Pow(x,n), Subsets, Rotated Array, Find Peak",
+   "prep": "Linear algebra 1: vectors, dot products, 3x3 matmul",
+   "lab": "Vectorise the MLP with NumPy matrix products",
+   "light": false
+  },
+  {
+   "week": 8,
+   "start": "2026-11-23",
+   "dsa": "Sorting: merge/quick sort, Sort Colors, Merge Intervals, Kth Largest",
+   "prep": "Linear algebra 2: rank, inverse, determinant, 2x2 eigenvalues",
+   "lab": "PCA/SVD: visualise embeddings in 2-D/3-D",
+   "light": false,
+   "mock": {
+    "date": "2026-11-28",
+    "title": "Mock 1: 10 maths MCQs + 2 easy coding (60 min)"
+   }
+  },
+  {
+   "week": 9,
+   "start": "2026-11-30",
+   "dsa": "Binary trees: Max Depth, Invert, Level Order, Diameter",
+   "prep": "ML basics: supervised vs unsupervised, train/test split, overfitting",
+   "lab": "Lock AIRTAC architecture; bigram language model (makemore 1)",
+   "light": false
+  },
+  {
+   "week": 10,
+   "start": "2026-12-07",
+   "dsa": "BST: Validate, Lowest Common Ancestor, Kth Smallest",
+   "prep": "Regression and gradient descent; Linear/Logistic in scikit-learn",
+   "lab": "Repo + README; MLP character-level LM (Bengio 2003)",
+   "light": false
+  },
+  {
+   "week": 11,
+   "start": "2026-12-14",
+   "dsa": "Heaps: Kth Largest in Stream, Top K Frequent, Merge K Lists",
+   "prep": "Metrics: precision, recall, F1, confusion matrix, ROC",
+   "lab": "Activations, BatchNorm, vanishing/exploding gradients",
+   "light": false
+  },
+  {
+   "week": 12,
+   "start": "2026-12-21",
+   "dsa": "Revision: redo 15 failed problems",
+   "prep": "Decision trees, k-NN, k-means, PCA, bias-variance",
+   "lab": "HF Agents course Unit 1; trees and k-means in raw NumPy",
+   "light": false
+  },
+  {
+   "week": 13,
+   "start": "2026-12-28",
+   "dsa": "Graphs 1: Number of Islands, Flood Fill, Clone Graph",
+   "prep": "Neural nets: activations, backprop, PyTorch MNIST",
+   "lab": "HF Agents Units 2-3; read Attention Is All You Need; self-attention from scratch",
+   "light": false
+  },
+  {
+   "week": 14,
+   "start": "2027-01-04",
+   "dsa": "Graphs 2: Course Schedule, Rotting Oranges, Grid Shortest Path",
+   "prep": "LLM foundations: tokens, embeddings, attention, temperature",
+   "lab": "Kaggle agents course days 1-2 (tools, MCP); build nanoGPT",
+   "light": false
+  },
+  {
+   "week": 15,
+   "start": "2027-01-11",
+   "dsa": "Greedy: Jump Game, Assign Cookies, Non-overlapping Intervals",
+   "prep": "RAG: chunking, vector search, retrieval evaluation",
+   "lab": "Kaggle days 3-5; RAG in your project; a NumPy vector index",
+   "light": false
+  },
+  {
+   "week": 16,
+   "start": "2027-01-18",
+   "dsa": "DP 1: Climbing Stairs, House Robber, Coin Change",
+   "prep": "Agents: ReAct, tool calling, memory, guardrails",
+   "lab": "Deploy agent v1 on Hugging Face Spaces; add a self-critic step",
+   "light": false
+  },
+  {
+   "week": 17,
+   "start": "2027-01-25",
+   "dsa": "DP 2: LCS, 0/1 Knapsack, LIS",
+   "prep": "Review phase 1-2 maths and ML logs",
+   "lab": "Blog post on the v1 architecture and benchmarks",
+   "light": false,
+   "mock": {
+    "date": "2027-01-30",
+    "title": "Mock 2: 20 maths/ML MCQs + 2 coding (60 min, Amazon style)"
+   }
+  },
+  {
+   "week": 18,
+   "start": "2027-02-01",
+   "dsa": "1 mixed easy-medium a day from the failed log",
+   "prep": "OOP: inheritance, polymorphism, abstraction, output prediction",
+   "lab": "GSoC: shortlist 5 AI orgs; read Chollet, On the Measure of Intelligence (ARC-AGI)",
+   "light": false
+  },
+  {
+   "week": 19,
+   "start": "2027-02-08",
+   "dsa": "Strings: Valid Anagram, Longest Palindromic Substring",
+   "prep": "OS 1: processes vs threads, CPU scheduling",
+   "lab": "GSoC: join org chats, build codebases; Tree-of-Thoughts and test-time compute",
+   "light": false
+  },
+  {
+   "week": 20,
+   "start": "2027-02-15",
+   "dsa": "Backtracking: Permutations, Combination Sum, N-Queens",
+   "prep": "OS 2: deadlocks, Banker's algorithm, paging, LRU/FIFO",
+   "lab": "GSoC: orgs announced, claim 2 good first issues; read DeepSeek-R1",
+   "light": false
+  },
+  {
+   "week": 21,
+   "start": "2027-02-22",
+   "dsa": "Tries: Implement Trie, Word Search II",
+   "prep": "DBMS 1: ER models, keys, normalisation 1NF-BCNF",
+   "lab": "GSoC PR #1; LoRA/QLoRA fine-tune on free Colab",
+   "light": false
+  },
+  {
+   "week": 22,
+   "start": "2027-03-01",
+   "dsa": "Union-find: Number of Provinces, Redundant Connection",
+   "prep": "DBMS 2: SQL joins, GROUP BY/HAVING, ACID (SQLBolt)",
+   "lab": "GSoC PR #2; discuss a project idea with a mentor",
+   "light": false
+  },
+  {
+   "week": 23,
+   "start": "2027-03-08",
+   "dsa": "Timed: 2 mixed mediums in 45 minutes",
+   "prep": "Git internals: branch, merge, rebase, conflicts",
+   "lab": "Write the full GSoC proposal draft",
+   "light": false
+  },
+  {
+   "week": 24,
+   "start": "2027-03-15",
+   "dsa": "Light Mode: 1 problem a day",
+   "prep": "Light Mode: review notes",
+   "lab": "Mentor feedback; submit the GSoC proposal early",
+   "light": true
+  },
+  {
+   "week": 25,
+   "start": "2027-03-22",
+   "dsa": "Timed mixed mediums",
+   "prep": "CS core review",
+   "lab": "Keep sending patches after submitting",
+   "light": false,
+   "mock": {
+    "date": "2027-03-27",
+    "title": "Mock 3: 20 MCQs + 2 medium coding (60 min)"
+   }
+  },
+  {
+   "week": 26,
+   "start": "2027-03-29",
+   "dsa": "2 medium DSA a day + 10 reasoning questions a week",
+   "prep": "Resume: CGPA 8.4, agent v1, nanoGPT, merged PRs",
+   "lab": "Resume finalised",
+   "light": false
+  },
+  {
+   "week": 27,
+   "start": "2027-04-05",
+   "dsa": "2 medium DSA a day",
+   "prep": "Watch Microsoft Engage registration daily (may open for 1 day)",
+   "lab": "",
+   "light": false,
+   "mock": {
+    "date": "2027-04-10",
+    "title": "Engage mock: 4 coding + CS/reasoning MCQs (60 min)"
+   }
+  },
+  {
+   "week": 28,
+   "start": "2027-04-12",
+   "dsa": "2 medium DSA a day",
+   "prep": "Amazon MLSS statement of purpose (500 words)",
+   "lab": "30 ML MCQs",
+   "light": false
+  },
+  {
+   "week": 29,
+   "start": "2027-04-19",
+   "dsa": "2 medium DSA a day",
+   "prep": "Faculty + peer review of SOP and resume",
+   "lab": "30 maths MCQs",
+   "light": false
+  },
+  {
+   "week": 30,
+   "start": "2027-04-26",
+   "dsa": "Light Mode before exams",
+   "prep": "GSoC results: community bonding, or backup applications",
+   "lab": "",
+   "light": true
+  },
+  {
+   "week": 31,
+   "start": "2027-05-03",
+   "dsa": "Strict Light Mode: 1 problem a morning",
+   "prep": "RGM end-semester exams",
+   "lab": "",
+   "light": true
+  },
+  {
+   "week": 32,
+   "start": "2027-05-10",
+   "dsa": "Strict Light Mode",
+   "prep": "RGM end-semester exams",
+   "lab": "",
+   "light": true
+  },
+  {
+   "week": 33,
+   "start": "2027-05-17",
+   "dsa": "Strict Light Mode",
+   "prep": "RGM end-semester exams",
+   "lab": "",
+   "light": true
+  },
+  {
+   "week": 34,
+   "start": "2027-05-31",
+   "dsa": "Mixed mediums",
+   "prep": "Submit Amazon MLSS application (resume + SOP) on Unstop",
+   "lab": "",
+   "light": false,
+   "mock": {
+    "date": "2027-06-05",
+    "title": "Mock 4: Amazon style, past papers (60 min)"
+   }
+  },
+  {
+   "week": 35,
+   "start": "2027-06-07",
+   "dsa": "Mixed mediums",
+   "prep": "Amazon MLSS assessment window",
+   "lab": "",
+   "light": false,
+   "mock": {
+    "date": "2027-06-12",
+    "title": "Mock 5, then the official assessment"
+   }
+  },
+  {
+   "week": 36,
+   "start": "2027-06-14",
+   "dsa": "Keep the streak",
+   "prep": "GSoC coding / Engage mentorship / MLSS sessions",
+   "lab": "Project v2: test-time reasoning and evals",
+   "light": false
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+# AIRTAC Advance. Pinned so every PC you install it on gets the same versions.
+# Core
+fastapi==0.143.0
+uvicorn==0.54.0
+httpx==0.28.1
+pydantic==2.14.0
+python-dotenv==1.2.4
+fpdf2==2.8.9
+Pillow==12.3.0
+pypdf==6.20.0
+# Plugins (each plugin still works out if one is missing: the Plugins page says what to install)
+ddgs==9.16.0          # web search: DuckDuckGo, no key (MIT)
+python-docx==1.2.0    # Word files (MIT)
+python-pptx==1.0.2    # PowerPoint files (MIT)
+openpyxl==3.1.5       # Excel files (MIT)
+psutil==7.2.2         # battery, memory, processor (BSD)
+keyring==25.7.0       # API keys before the vault exists: Windows Credential Manager (MIT)
+cryptography==50.0.2  # the vault: AES-256-GCM, and reading the old vault once (Apache-2.0 or BSD)
+argon2-cffi==25.1.0   # the vault's Argon2id key from your super password (MIT)
+numpy==2.5.4          # faster meaning search in the knowledge library (BSD)
+winotify==1.1.0; sys_platform == "win32"   # Windows notifications (MIT)
+rapidocr==3.10.0      # text in photos and scanned pages (OCR), offline, models included (Apache-2.0)
+onnxruntime==1.31.0   # runs RapidOCR's models and Whisper's voice detector (MIT)
+faster-whisper==1.2.1 # speech to text for audio attachments, offline; Whisper "base" model in models/whisper (MIT)
+# Tests and checks (scripts/security_check.py; gitleaks.exe goes in tools\gitleaks\)
+pytest==9.1.1
+pip-audit==2.10.1
+bandit==1.9.4
+sounddevice==0.5.5    # Dictation: the microphone (MIT; PortAudio included on Windows)
+keyboard==0.13.5      # Dictation: the hold-to-talk key anywhere in Windows, and typing the words (MIT)
+segno==1.6.6  # the pairing QR code for Airtac Mobile (BSD, pure Python)

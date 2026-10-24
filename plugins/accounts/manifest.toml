@@ -1,0 +1,19 @@
+id = "accounts"
+name = "Accounts"
+version = "0.1.0"
+icon = "user"
+about = "Your coding and internship accounts in one place: log in once in AIRTAC's Chrome profile and stay logged in, keep login details in Windows' password store, and see your stats."
+order = 31
+action = "accounts"
+keywords = ["account", "accounts", "sign up", "signup", "log in", "login", "sign in", "codechef", "geeksforgeeks", "gfg",
+            "profile", "username", "rating", "coding score", "my stats"]
+quick = ["Show my coding stats", "Open the CodeChef login", "Sign up for GeeksforGeeks", "Set my CodeChef username to ali_rgm"]
+
+[requires]
+imports = []
+plugins = []        # works alone; uses the LeetCode and EduSkills plugins when they are on
+
+[permissions]
+# Public profile pages only. AIRTAC sends nothing but the username in the address.
+network = ["leetcode.com", "codechef.com", "geeksforgeeks.org"]
+risk = "read"

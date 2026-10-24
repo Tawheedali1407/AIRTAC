@@ -1,0 +1,16 @@
+id = "coach"
+name = "Coach"
+version = "0.1.0"
+icon = "spark"
+about = "How AIRTAC improves: lessons from your corrections, a weekly self-review you approve, and reusable skills."
+order = 95
+action = "lessons"          # the app page lists lessons with on/off switches
+keywords = ["review", "lessons", "feedback", "improve", "training data", "how am i doing"]
+quick = ["Weekly review", "Export training data"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

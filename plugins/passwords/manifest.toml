@@ -1,0 +1,15 @@
+id = "passwords"
+name = "Passwords"
+version = "0.1.0"
+icon = "lock"
+about = "Your logins and API keys, encrypted with a super password only you know. Works on this PC only."
+order = 84
+app = false                 # it has its own page (Passwords in the menu)
+keywords = []               # no tools: the AI never sees the vault
+
+[requires]
+imports = ["cryptography"]
+
+[permissions]
+network = []                # nothing leaves the PC
+risk = "local"

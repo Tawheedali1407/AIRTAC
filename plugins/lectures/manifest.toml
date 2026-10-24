@@ -1,0 +1,16 @@
+id = "lectures"
+name = "Lectures"
+version = "0.1.0"
+icon = "volume"
+about = "Turn a PDF, notes or a course outline into a summary, glossary, a lecture in a teacher's voice and a quiz, with page citations. Play it aloud."
+order = 21
+action = "lectures"         # the app page has the make form and the player
+keywords = ["lecture", "explain this pdf", "teach me", "summarise my notes", "glossary", "audio overview"]
+quick = ["Make a lecture from my last attached file"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []                # the brain does the writing (your PC's model, or a cloud brain you set up)
+risk = "local"

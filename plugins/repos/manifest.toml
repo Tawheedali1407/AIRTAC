@@ -1,0 +1,16 @@
+id = "repos"
+name = "Repositories"
+version = "0.1.0"
+icon = "branch"
+about = "Add a GitHub repository by its address: AIRTAC clones it, reads the README, shows the install steps and runs them only when you press Confirm."
+order = 88
+action = "repos"            # the app page: add, list, install with a live log, free AI APIs
+keywords = ["repositories", "my repositories", "cloned repos"]
+quick = ["What repositories are on this PC?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []                # git does the cloning itself (a fixed command); AIRTAC never fetches code over HTTP
+risk = "device"

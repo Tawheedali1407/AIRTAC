@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The AIRTAC wheel for tab icons: the four element colours and the AI core stay readable at 16 px. -->
+  <path d="M16 16L5.39 5.39A15 15 0 0 1 26.61 5.39Z" fill="#9fd0f5"/>
+  <path d="M16 16L26.61 5.39A15 15 0 0 1 26.61 26.61Z" fill="#f7a77c"/>
+  <path d="M16 16L26.61 26.61A15 15 0 0 1 5.39 26.61Z" fill="#8fd6dc"/>
+  <path d="M16 16L5.39 26.61A15 15 0 0 1 5.39 5.39Z" fill="#b9d98f"/>
+  <path d="M5.39 5.39L26.61 26.61M26.61 5.39L5.39 26.61" stroke="#1d232b" stroke-width="1"/>
+  <circle cx="16" cy="16" r="15" fill="none" stroke="#1d232b" stroke-width="2"/>
+  <circle cx="16" cy="16" r="6" fill="#1d232b"/>
+  <circle cx="16" cy="16" r="2" fill="#ffffff"/>
+</svg>

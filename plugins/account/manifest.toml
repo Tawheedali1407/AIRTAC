@@ -1,0 +1,15 @@
+id = "account"
+name = "Account"
+version = "0.1.0"
+icon = "user"
+about = "Sign in with Google to restore your setup on a new PC (encrypted Drive sync, off by default) and import Google Calendar."
+order = 92
+app = false                 # it lives in Settings > Account
+keywords = []
+
+[requires]
+imports = ["cryptography"]
+
+[permissions]
+network = ["accounts.google.com", "oauth2.googleapis.com", "www.googleapis.com"]
+risk = "local"

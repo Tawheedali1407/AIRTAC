@@ -1,0 +1,17 @@
+{
+  "_note": "SAMPLE DATA: what the reader shows for the three sample search results until LIVE_PUBLIC_APIS=true.",
+  "pages": {
+    "https://nebius.com/": {
+      "title": "Nebius Token Factory (sample page)",
+      "text": "## Nebius Token Factory\nNebius Token Factory serves open models through an OpenAI-compatible API, so an app that already speaks that API can switch to it by changing the base URL and the key.\nIt hosts NVIDIA Nemotron models among others, and bills by the number of tokens used.\n## Why AIRTAC uses it\nAIRTAC sends each question to Nemotron there, with a short list of tools the model may call.\n- One tool call per turn keeps answers predictable.\n- A 429 answer (too many requests) is retried after a short wait."
+    },
+    "https://developer.nvidia.com/": {
+      "title": "NVIDIA Nemotron models (sample page)",
+      "text": "## Nemotron\nNemotron is NVIDIA's family of open models built for agentic work: reasoning, tool calling and following instructions.\nThe family comes in sizes from small models that run on a laptop to large ones served in the cloud.\n## Using Nemotron for tools\nGive the model a clear description for each tool, and keep the list short so it picks the right one."
+    },
+    "https://fastapi.tiangolo.com/": {
+      "title": "FastAPI (sample page)",
+      "text": "## FastAPI\nFastAPI is a Python web framework for building APIs with standard type hints.\nIt checks request data with Pydantic and writes interactive documentation for every route.\n## Why it fits AIRTAC\nOne small Python process serves both the API and the web page, which keeps the laptop light."
+    }
+  }
+}

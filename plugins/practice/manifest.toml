@@ -1,0 +1,18 @@
+id = "practice"
+name = "Practice"
+version = "0.1.0"
+icon = "clip"
+about = "Solve pasted problems, explain them step by step, and make solution PDFs. Contest problems are refused."
+order = 25
+action = "paste"            # the app page shows the "Paste a problem" button
+keywords = ["solve", "solution", "explain", "step by step", "problem", "code", "algorithm", "codechef",
+            "geeksforgeeks", "gfg"]
+quick = ["Explain the solution step by step", "Make a PDF of today's solutions",
+         "Make a shareable PDF of this week's solutions"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

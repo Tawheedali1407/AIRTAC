@@ -1,0 +1,33 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Your data: memory, files AIRTAC makes, downloaded models. Never published.
+data/
+outputs/
+workspace/
+models/
+backups/
+# Your library stays on your laptop (only the guide and the sample note are shared).
+knowledge/**
+!knowledge/
+!knowledge/README.md
+!knowledge/*/
+!knowledge/coding/sample-big-o.md
+tmp/
+# Repositories you add on the Repositories page (cloned code, each with its own venv). Only the top folder:
+# a bare "repos/" also hid plugins/repos/ (the plugin's own code) from git.
+/repos/
+# Tools downloaded for checks (gitleaks.exe)
+tools/
+# Ollama's model store, if its "Model location" is ever pointed at this folder by mistake (18 Oct)
+/blobs/
+/manifests/
+/manifests-v2/

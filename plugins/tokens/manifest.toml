@@ -1,0 +1,15 @@
+id = "tokens"
+name = "Tokens"
+version = "0.1.0"
+icon = "chip"
+about = "How many tokens each brain used today, with daily limits so free tiers and paid credits last."
+order = 86
+keywords = ["token", "tokens", "token usage", "credits", "usage", "budget", "limit", "quota"]
+quick = ["How many tokens did I use today?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []                # it only counts; nothing leaves the PC
+risk = "local"

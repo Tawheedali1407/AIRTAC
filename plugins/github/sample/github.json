@@ -1,0 +1,31 @@
+{
+  "_note": "SAMPLE DATA for offline development and the tests. Not real GitHub data.",
+  "user": "Tawheedali1407",
+  "notifications": 2,
+  "events_today": [
+    {"repo": "airtac", "type": "push", "text": "pushed 3 commits to main: add mock LLM keyword rules"},
+    {"repo": "airtac", "type": "issue", "text": "opened issue #4: mic button feels slow on Firefox"},
+    {"repo": "dsa-practice", "type": "push", "text": "pushed 1 commit: solve coin change (dp)"},
+    {"repo": "dsa-practice", "type": "star", "text": "got a new star"}
+  ],
+  "repos": {
+    "airtac": {
+      "description": "Voice-driven personal AI assistant for the Nebius x NVIDIA hackathon",
+      "stars": 3,
+      "open_issues": [
+        {"number": 4, "title": "Mic button feels slow on Firefox", "labels": ["ui"], "created": "2026-10-08"},
+        {"number": 3, "title": "Add a dark mode toggle to settings", "labels": ["ui", "good first issue"], "created": "2026-10-06"},
+        {"number": 2, "title": "Cache LeetCode daily problem for the whole day", "labels": ["performance"], "created": "2026-10-05"}
+      ],
+      "readme": "# AIRTAC\n\nA voice-driven personal AI assistant.\n\n## What it does\n- Summarises your GitHub activity and open issues\n- Reads today's LeetCode problem and suggests practice\n- Fetches Hacker News, arXiv papers and Codeforces contests\n- Remembers facts you tell it and makes PDFs\n\n## Run it\npython -m venv .venv\n.venv\\Scripts\\Activate.ps1\npip install -r requirements.txt\nuvicorn app.main:app --reload\n\n## Modes\nMock (no keys), demo (public, sample data) and live (real APIs)."
+    },
+    "dsa-practice": {
+      "description": "My LeetCode and Codeforces solutions in Python",
+      "stars": 7,
+      "open_issues": [
+        {"number": 1, "title": "Add notes for sliding window problems", "labels": ["docs"], "created": "2026-09-28"}
+      ],
+      "readme": "# dsa-practice\n\nSolutions to LeetCode and Codeforces problems, grouped by topic.\nEach file has the approach, the code and the time and space complexity."
+    }
+  }
+}

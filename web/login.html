@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-skin="crimson">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>AIRTAC Advance: sign in</title>
+  <meta name="theme-color" content="#15171c">
+  <link rel="icon" href="favicon.svg?v=keys1" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest?v=keys1">
+  <link rel="stylesheet" href="style.css?v=keys1">
+  <script src="login.js?v=keys1" defer></script>
+  <style>
+    body { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+    .signin { width: min(380px, 100%); text-align: center; }
+    .signin img { width: 88px; height: 88px; }
+    .signin h1 { margin: 12px 0 4px; font: 700 28px/1.1 var(--display); letter-spacing: 0.12em; }
+    .signin form { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; text-align: left; }
+    .signin .error { min-height: 1.3em; color: var(--accent-ink); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="signin panel">
+    <img src="logo.svg" alt="">
+    <h1>AIRTAC</h1>
+    <p class="muted">This device isn't your PC, so AIRTAC asks for your passcode once. You set it on the PC: Connections, then Phone and other devices.</p>
+    <form id="form">
+      <label for="code">Passcode</label>
+      <input id="code" class="field" type="password" autocomplete="current-password" required autofocus>
+      <button class="primary" type="submit">Sign in</button>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+  </main>
+</body>
+</html>

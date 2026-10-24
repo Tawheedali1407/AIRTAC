@@ -1,0 +1,120 @@
+/* AIRTAC start-up: the element wheel assembles (air, fire, water, earth fly in around the AI core),
+   the name decodes, the server and brain report in, then the doors open on the app.
+   Pure CSS runs it, so it shows on the first paint; boot.js only adds the status lines and the exit.
+   It always clears itself after 6 s, even if the script never runs. */
+
+.boot { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; color: var(--ink);
+  animation: boot-failsafe 0s linear 6s forwards; }
+@keyframes boot-failsafe { to { visibility: hidden; pointer-events: none; } }
+.boot-door { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--bg); }
+.boot-door.top { top: 0; }
+.boot-door.bottom { bottom: 0; }
+.boot-door::after { content: ""; position: absolute; inset: 0; opacity: 0.5;
+  background: radial-gradient(60% 90% at 50% 100%, var(--accent-soft), transparent 70%); }
+.boot-door.bottom::after { background: radial-gradient(60% 90% at 50% 0%, var(--accent-soft), transparent 70%); }
+.boot-seam { position: absolute; top: 50%; left: 50%; width: 0; height: 2px; transform: translate(-50%, -50%);
+  background: var(--accent); box-shadow: 0 0 18px 2px var(--accent); opacity: 0; }
+
+.boot-core { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 24px; }
+.boot-wheel { width: min(150px, 38vw); height: auto; overflow: visible; }
+.boot-wheel .w { transform-box: view-box; transform-origin: 50% 50%; opacity: 0;
+  animation: boot-wedge 0.62s cubic-bezier(0.2, 0.9, 0.25, 1.15) forwards; }
+.boot-wheel .w1 { --from: translate(0, -34px) rotate(-70deg); animation-delay: 0.05s; }
+.boot-wheel .w2 { --from: translate(34px, 0) rotate(70deg); animation-delay: 0.14s; }
+.boot-wheel .w3 { --from: translate(0, 34px) rotate(-70deg); animation-delay: 0.23s; }
+.boot-wheel .w4 { --from: translate(-34px, 0) rotate(70deg); animation-delay: 0.32s; }
+@keyframes boot-wedge { from { opacity: 0; transform: var(--from) scale(0.55); } to { opacity: 1; transform: none; } }
+.boot-ring { fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-dasharray: 100; stroke-dashoffset: 100;
+  animation: boot-draw 0.7s ease-out 0.2s forwards; }
+@keyframes boot-draw { to { stroke-dashoffset: 0; } }
+.boot-cross { stroke: #1d232b; stroke-width: 1.6; opacity: 0; animation: boot-fade 0.3s ease 0.62s forwards; }
+.boot-orbit { fill: none; stroke: #1d232b; stroke-width: 1.9; stroke-linecap: round; stroke-dasharray: 0.1 3.45; opacity: 0;
+  transform-box: view-box; transform-origin: 50% 50%;
+  animation: boot-fade 0.3s ease 0.7s forwards, boot-spin 6s linear 0.7s infinite; }
+.boot-hub { transform-box: view-box; transform-origin: 50% 50%; transform: scale(0);
+  animation: boot-hub 0.45s cubic-bezier(0.3, 1.5, 0.5, 1) 0.6s forwards; }
+.boot-ai { font: 700 11.5px/1 Inter, "Segoe UI", Arial, sans-serif; letter-spacing: 0.4px; fill: #fff; opacity: 0;
+  animation: boot-fade 0.25s ease 0.85s forwards; }
+.boot-pulse { fill: none; stroke: var(--accent); stroke-width: 1.2; opacity: 0; transform-box: view-box; transform-origin: 50% 50%;
+  animation: boot-pulse 1.5s ease-out 0.9s infinite; }
+.boot-pulse.p2 { animation-delay: 1.65s; }
+@keyframes boot-hub { to { transform: scale(1); } }
+@keyframes boot-fade { to { opacity: 1; } }
+@keyframes boot-spin { to { transform: rotate(360deg); } }
+@keyframes boot-pulse { 0% { opacity: 0.75; transform: scale(1); } 100% { opacity: 0; transform: scale(1.7); } }
+
+.boot-word { font: 700 clamp(30px, 8vw, 44px)/1 var(--display); letter-spacing: 0.34em; margin-right: -0.34em;
+  color: var(--ink); opacity: 0; animation: boot-word 0.6s ease-out 0.45s forwards; font-variant-numeric: tabular-nums; }
+@keyframes boot-word { from { opacity: 0; letter-spacing: 0.7em; filter: blur(4px); } to { opacity: 1; letter-spacing: 0.34em; } }
+.boot-edition { margin-top: -6px; color: var(--accent-ink); font: 600 13px/1 var(--display); letter-spacing: 0.5em; margin-right: -0.5em;
+  opacity: 0; animation: boot-fade 0.4s ease 0.8s forwards; }
+.boot-edition:empty { display: none; }
+.boot-lines { display: grid; gap: 6px; min-height: 44px; margin: 6px 0 0; padding: 0; list-style: none;
+  font-size: 13.5px; color: var(--muted); }
+.boot-lines li { display: flex; align-items: center; gap: 8px; animation: boot-line 0.3s ease-out both; }
+.boot-lines li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+.boot-lines li.wait::before { background: var(--warn); box-shadow: 0 0 8px var(--warn); }
+@keyframes boot-line { from { opacity: 0; transform: translateX(-10px); clip-path: inset(0 100% 0 0); } to { opacity: 1; transform: none; clip-path: inset(0); } }
+.boot-skip { position: absolute; bottom: calc(18px + env(safe-area-inset-bottom)); left: 0; right: 0; margin: 0;
+  text-align: center; color: var(--muted); font-size: 12px; opacity: 0; animation: boot-fade 0.4s ease 1.2s forwards; }
+
+/* The exit: the core folds away, a light runs along the seam, and the doors part. */
+.boot.out .boot-core, .boot.out .boot-skip { transition: opacity 0.18s ease-in, transform 0.18s ease-in; opacity: 0; transform: scale(0.94); }
+.boot.out .boot-seam { animation: boot-seam 0.32s ease-out forwards; }
+.boot.out .boot-door { transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1) 0.24s; }
+.boot.out .boot-door.top { transform: translateY(-101%); }
+.boot.out .boot-door.bottom { transform: translateY(101%); }
+@keyframes boot-seam { 0% { opacity: 1; width: 0; } 70% { opacity: 1; width: 100vw; } 100% { opacity: 0; width: 100vw; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-wheel .w, .boot-ring, .boot-cross, .boot-orbit, .boot-hub, .boot-ai, .boot-word, .boot-edition, .boot-skip {
+    animation: none; opacity: 1; transform: none; stroke-dashoffset: 0; }
+  .boot-pulse { display: none; }
+  .boot.out { transition: opacity 0.25s ease; opacity: 0; }
+  .boot.out .boot-door { transition: none; transform: none; }
+  .boot.out .boot-seam { animation: none; }
+}
+
+/* Switching modes: the new view opens like an iris from where you tapped; a small readout names it. */
+main { view-transition-name: stage; }
+::view-transition-old(stage) { animation: stage-out 0.2s ease-in both; }
+::view-transition-new(stage) { animation: stage-in 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes stage-out { to { opacity: 0; transform: scale(0.985); filter: blur(3px); } }
+@keyframes stage-in { from { clip-path: circle(0 at var(--tap-x, 50%) var(--tap-y, 30%)); filter: brightness(1.35); }
+  to { clip-path: circle(170vmax at var(--tap-x, 50%) var(--tap-y, 30%)); filter: none; } }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+/* the readout keeps its own layer, so it shows on top while the view opens */
+.mode-hud { view-transition-name: mode-hud; }
+::view-transition-group(mode-hud) { animation: none; }
+::view-transition-old(mode-hud) { display: none; }
+::view-transition-new(mode-hud) { animation: none; }
+
+.mode-hud { position: fixed; top: 64px; left: 50%; z-index: 60; display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 10px; transform: translate(-50%, -8px); opacity: 0; pointer-events: none;
+  color: var(--ink); background: var(--surface); border: 1px solid var(--accent); border-radius: var(--r-pill, 999px);
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 8px 24px rgba(0, 0, 0, 0.35); font-weight: 600; font-size: 14px; overflow: hidden; }
+.mode-hud .icon { width: 17px; height: 17px; color: var(--accent-ink); }
+.mode-hud::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent);
+  transform: scaleX(0); transform-origin: left; }
+.mode-hud.show { animation: hud 1.1s ease forwards; }
+.mode-hud.show::after { animation: hud-bar 0.9s ease-out forwards; }
+@keyframes hud { 0% { opacity: 0; transform: translate(-50%, -8px); } 14%, 78% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -4px); } }
+@keyframes hud-bar { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(stage), ::view-transition-new(stage) { animation: none; }
+  .mode-hud.show { animation-duration: 0.9s; }
+}
+
+/* AI tools on Home: one tap opens the site */
+.ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 8px; }
+.ai-tile { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 9px 10px; color: var(--ink); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); font-weight: 600; font-size: 14px; }
+.ai-tile:hover { border-color: color-mix(in srgb, var(--hue) 60%, var(--line)); background: var(--raised); }
+.ai-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ai-tile span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ai-mark { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 9px; font-size: 12.5px; font-weight: 700;
+  color: var(--hue); background: color-mix(in srgb, var(--hue) 16%, transparent); border: 1px solid color-mix(in srgb, var(--hue) 40%, transparent); }
+@media (max-width: 560px) { .ai-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ai-tile { flex-direction: column; gap: 6px; padding: 10px 6px; font-size: 13px; text-align: center; }
+  .ai-tile span:last-child { max-width: 100%; } }

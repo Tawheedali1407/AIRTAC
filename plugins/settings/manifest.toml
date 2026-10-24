@@ -1,0 +1,16 @@
+id = "settings"
+name = "Settings"
+version = "0.1.0"
+icon = "gear"
+about = "Theme, which browser opens your social sites, the chat's token warning and its default brain."
+order = 5
+always = true
+app = false                 # it has its own page (Settings in the menu)
+keywords = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

@@ -1,0 +1,17 @@
+id = "research"
+name = "Research"
+version = "0.1.0"
+icon = "steps"
+about = "A research workspace: your notes on one side, an AI co-pilot on the other that summarises, outlines and analyses into them."
+order = 12
+action = "research"
+keywords = ["research", "notes", "notebook", "scratchpad", "summarise my notes", "outline", "analyse"]
+quick = []
+
+[requires]
+imports = []
+plugins = []        # uses the Web plugin for "Find sources" when it is on
+
+[permissions]
+network = []        # the co-pilot uses the brain; sources come through the Web plugin's own permissions
+risk = "local"

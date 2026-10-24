@@ -1,0 +1,18 @@
+id = "knowledge"
+name = "Knowledge"
+version = "0.1.0"
+icon = "library"
+about = "Your own books and notes (medicine, engineering, coding), searched by meaning and quoted with sources."
+order = 14
+action = "library"          # the app page shows the drop zone for files
+keywords = ["library", "my books", "my notes", "textbook", "according to", "chapter", "reference", "knowledge"]
+quick = ["Search my library for the cardiac cycle", "What do my notes say about Ohm's law?", "Read my new files"]
+
+[requires]
+imports = ["pypdf"]
+optional_imports = ["numpy", "docx"]   # faster meaning search; Word files
+
+[permissions]
+network = ["api.github.com", "raw.githubusercontent.com"]   # only to add a public GitHub repository's documents; embeddings come from Ollama on this laptop
+files = ["knowledge/"]
+risk = "local"

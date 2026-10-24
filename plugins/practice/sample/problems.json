@@ -1,0 +1,72 @@
+{
+  "_note": "SAMPLE DATA. Two practice problems per site, written as short original paraphrases (not copied statements). Solutions are AI-style samples for offline testing.",
+  "problems": [
+    {
+      "site": "leetcode", "title": "Climbing Stairs", "keys": ["climbing stairs"],
+      "url": "https://leetcode.com/problems/climbing-stairs/", "difficulty": "Easy", "tags": ["dynamic programming", "math"],
+      "statement": "Sample paraphrase: you climb a staircase of n steps, moving 1 or 2 steps at a time. Count the different ways to reach the top.",
+      "summary": "Count the ways to climb n steps taking 1 or 2 steps at a time.\nThe answer follows the Fibonacci pattern.",
+      "approach": "The ways to reach step i are the ways to reach step i-1 plus the ways to reach step i-2. Keep only the last two values while walking up to n.",
+      "code": "def climb_stairs(n):\n    a, b = 1, 1  # ways to reach step 0 and step 1\n    for _ in range(n - 1):\n        a, b = b, a + b\n    return b",
+      "complexity": "O(n) time, O(1) space.",
+      "steps": {"steps": [
+        {"title": "Find the pattern", "explanation": "The last move is either 1 step or 2 steps, so ways(i) = ways(i-1) + ways(i-2).", "small_example": "ways(3) = ways(2) + ways(1) = 2 + 1 = 3"},
+        {"title": "Set the base cases", "explanation": "There is 1 way to stand at step 0 and 1 way to reach step 1.", "small_example": "a = 1, b = 1"},
+        {"title": "Walk up the stairs", "explanation": "Shift the pair forward n-1 times, adding the two previous counts each time.", "small_example": "n=4: (1,1) -> (1,2) -> (2,3) -> (3,5), answer 5"}],
+        "edge_cases": ["n = 1 returns 1", "large n stays fast because only two numbers are kept"],
+        "complexity": "O(n) time, O(1) space."}
+    },
+    {
+      "site": "leetcode", "title": "Container With Most Water", "keys": ["container with most water", "most water"],
+      "url": "https://leetcode.com/problems/container-with-most-water/", "difficulty": "Medium", "tags": ["array", "two pointers", "greedy"],
+      "statement": "Sample paraphrase: given wall heights along a line, pick two walls that hold the most water between them.",
+      "summary": "Choose two lines from an array of heights that trap the largest area.\nArea is the shorter height times the distance between them.",
+      "approach": "Start with pointers at both ends and record the area. Move the pointer at the shorter wall inward, because moving the taller one can never increase the area.",
+      "code": "def max_area(height):\n    left, right = 0, len(height) - 1\n    best = 0\n    while left < right:\n        best = max(best, min(height[left], height[right]) * (right - left))\n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    return best",
+      "complexity": "O(n) time, O(1) space.",
+      "steps": {"steps": [
+        {"title": "Start wide", "explanation": "Put one pointer at each end: this is the widest container.", "small_example": "[1,8,6,2,5,4,8,3,7]: left=0, right=8"},
+        {"title": "Measure", "explanation": "Area = min(height[left], height[right]) × (right − left).", "small_example": "min(1,7) × 8 = 8"},
+        {"title": "Move the shorter wall", "explanation": "The shorter wall limits the area, so only moving it can help.", "small_example": "height[0]=1 < 7, so left → 1"},
+        {"title": "Stop when they meet", "explanation": "Keep the best area seen.", "small_example": "best = 49"}],
+        "edge_cases": ["two walls only", "equal heights: moving either side is fine"],
+        "complexity": "O(n) time, O(1) space."}
+    },
+    {
+      "site": "codechef", "title": "Add Two Numbers", "keys": ["add two numbers", "flow001"],
+      "url": "https://www.codechef.com/problems/FLOW001", "difficulty": "Beginner", "tags": ["basic programming"],
+      "statement": "Sample paraphrase: for each of T test cases, read two integers and print their sum.",
+      "summary": "Read T pairs of integers.\nPrint the sum of each pair on its own line.",
+      "approach": "Read the number of test cases, then read each pair and print the sum. Use fast input because T can be large.",
+      "code": "import sys\n\ndef main():\n    data = sys.stdin.read().split()\n    t = int(data[0])\n    out = []\n    for i in range(t):\n        a, b = int(data[1 + 2 * i]), int(data[2 + 2 * i])\n        out.append(str(a + b))\n    print(\"\\n\".join(out))\n\nmain()",
+      "complexity": "O(T) time, O(T) space for the output."
+    },
+    {
+      "site": "codechef", "title": "Reverse The Number", "keys": ["reverse the number", "flow007"],
+      "url": "https://www.codechef.com/problems/FLOW007", "difficulty": "Beginner", "tags": ["basic programming", "math"],
+      "statement": "Sample paraphrase: for each test case, print the digits of N in reverse order without leading zeros.",
+      "summary": "Reverse the digits of each given number.\nLeading zeros in the result are dropped.",
+      "approach": "Reverse the number's string and convert it back to an integer, which removes leading zeros. Do this for every test case.",
+      "code": "t = int(input())\nfor _ in range(t):\n    n = input().strip()\n    print(int(n[::-1]))",
+      "complexity": "O(d) time per number, where d is the number of digits."
+    },
+    {
+      "site": "geeksforgeeks", "title": "Kadane's Algorithm", "keys": ["kadane", "maximum subarray sum", "max subarray"],
+      "url": "", "difficulty": "Medium", "tags": ["array", "dynamic programming"],
+      "statement": "Sample paraphrase: find the largest sum of any non-empty contiguous part of an integer array.",
+      "summary": "Find the maximum sum over all contiguous subarrays.\nThe array can contain negative numbers.",
+      "approach": "Walk the array keeping the best sum of a subarray that ends here: either extend the previous one or start fresh. Track the largest value seen.",
+      "code": "def max_subarray_sum(arr):\n    best = cur = arr[0]\n    for x in arr[1:]:\n        cur = max(x, cur + x)\n        best = max(best, cur)\n    return best",
+      "complexity": "O(n) time, O(1) space."
+    },
+    {
+      "site": "geeksforgeeks", "title": "Missing Number in Array", "keys": ["missing number", "missing in array"],
+      "url": "", "difficulty": "Easy", "tags": ["array", "math"],
+      "statement": "Sample paraphrase: an array holds n-1 distinct numbers from 1 to n. Find the one that is missing.",
+      "summary": "Numbers 1 to n appear once each, except one.\nReturn the missing number.",
+      "approach": "The sum 1 + 2 + ... + n is n(n+1)/2. Subtract the array's sum from it to get the missing number.",
+      "code": "def missing_number(arr, n):\n    return n * (n + 1) // 2 - sum(arr)",
+      "complexity": "O(n) time, O(1) space."
+    }
+  ]
+}

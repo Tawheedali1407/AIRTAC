@@ -1,0 +1,16 @@
+id = "attachments"
+name = "Attachments"
+version = "0.1.0"
+icon = "clip"
+about = "Attach files to any chat: PDF, PowerPoint, Word, Excel/CSV, text, photos (read with OCR) and audio (transcribed). Everything stays on this PC."
+order = 16                  # after knowledge (14): it indexes into the same store
+always = true
+app = false                 # the paperclip in every chat, not a page
+
+[requires]
+imports = []
+plugins = ["knowledge"]
+
+[permissions]
+network = []
+risk = "local"

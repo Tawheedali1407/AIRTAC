@@ -1,0 +1,6 @@
+{
+  "_note": "SAMPLE DATA for offline development and the tests. These are not your real stats.",
+  "leetcode": {"username": "MMDTAWHEEDALI", "solved": 111, "easy": 64, "medium": 41, "hard": 6, "ranking": 812345},
+  "codechef": {"username": "ali_rgm", "rating": 1432, "stars": 2, "highest": 1488, "solved": 57, "global_rank": 98211},
+  "gfg": {"username": "aligfg", "score": 286, "solved": 94, "institute_rank": 37, "streak": 12}
+}

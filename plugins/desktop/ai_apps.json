@@ -1,0 +1,262 @@
+{
+ "groups": {
+  "chat": "Chat",
+  "research": "Research and notes",
+  "build": "Agents and app builders",
+  "create": "Create",
+  "learn": "Learn and code"
+ },
+ "pinned": [
+  "Claude",
+  "Gemini",
+  "Groq",
+  "Perplexity",
+  "DeepSeek",
+  "Emergent",
+  "NotebookLM",
+  "Notewise",
+  "Manus",
+  "Higgsfield",
+  "Lovable"
+ ],
+ "apps": [
+  {
+   "name": "Claude",
+   "url": "https://claude.ai",
+   "mark": "Cl",
+   "group": "chat",
+   "about": "Anthropic's assistant: writing, code, long documents"
+  },
+  {
+   "name": "ChatGPT",
+   "url": "https://chatgpt.com",
+   "mark": "GP",
+   "group": "chat",
+   "about": "OpenAI's assistant"
+  },
+  {
+   "name": "Gemini",
+   "url": "https://gemini.google.com",
+   "mark": "Ge",
+   "group": "chat",
+   "about": "Google's assistant, with Google apps"
+  },
+  {
+   "name": "DeepSeek",
+   "url": "https://chat.deepseek.com",
+   "mark": "DS",
+   "group": "chat",
+   "about": "Open-weight models, strong at maths and code"
+  },
+  {
+   "name": "Groq",
+   "url": "https://console.groq.com/playground",
+   "mark": "Gq",
+   "group": "chat",
+   "about": "Very fast open models (playground)"
+  },
+  {
+   "name": "Copilot",
+   "url": "https://copilot.microsoft.com",
+   "mark": "Co",
+   "group": "chat",
+   "about": "Microsoft's assistant"
+  },
+  {
+   "name": "Grok",
+   "url": "https://grok.com",
+   "mark": "Gk",
+   "group": "chat",
+   "about": "xAI's assistant"
+  },
+  {
+   "name": "Le Chat",
+   "url": "https://chat.mistral.ai",
+   "mark": "Mi",
+   "group": "chat",
+   "about": "Mistral's assistant"
+  },
+  {
+   "name": "Qwen",
+   "url": "https://chat.qwen.ai",
+   "mark": "Qw",
+   "group": "chat",
+   "about": "Alibaba's open models"
+  },
+  {
+   "name": "Kimi",
+   "url": "https://www.kimi.com",
+   "mark": "Ki",
+   "group": "chat",
+   "about": "Moonshot's long-context assistant"
+  },
+  {
+   "name": "Perplexity",
+   "url": "https://www.perplexity.ai",
+   "mark": "Px",
+   "group": "research",
+   "about": "Answers with sources from the web"
+  },
+  {
+   "name": "NotebookLM",
+   "url": "https://notebooklm.google.com",
+   "mark": "NL",
+   "group": "research",
+   "about": "Chat with your PDFs and notes; audio overviews"
+  },
+  {
+   "name": "Notewise",
+   "url": "https://notewise.dev",
+   "mark": "Nw",
+   "group": "research",
+   "about": "AI notes and PDFs (mostly a phone and tablet app)"
+  },
+  {
+   "name": "Google AI Studio",
+   "url": "https://aistudio.google.com",
+   "mark": "AS",
+   "group": "research",
+   "about": "Try Gemini models and get an API key"
+  },
+  {
+   "name": "Consensus",
+   "url": "https://consensus.app",
+   "mark": "Cs",
+   "group": "research",
+   "about": "Answers from research papers"
+  },
+  {
+   "name": "Manus",
+   "url": "https://manus.im",
+   "mark": "Mn",
+   "group": "build",
+   "about": "An agent that carries out multi-step tasks"
+  },
+  {
+   "name": "Emergent",
+   "url": "https://emergent.sh",
+   "mark": "Em",
+   "group": "build",
+   "about": "Build full apps by describing them"
+  },
+  {
+   "name": "Lovable",
+   "url": "https://lovable.dev",
+   "mark": "Lv",
+   "group": "build",
+   "about": "Build web apps by chatting"
+  },
+  {
+   "name": "Bolt",
+   "url": "https://bolt.new",
+   "mark": "Bo",
+   "group": "build",
+   "about": "Prompt, run and deploy full-stack apps"
+  },
+  {
+   "name": "v0",
+   "url": "https://v0.app",
+   "mark": "v0",
+   "group": "build",
+   "about": "Vercel's UI and app generator"
+  },
+  {
+   "name": "Replit",
+   "url": "https://replit.com",
+   "mark": "Re",
+   "group": "build",
+   "about": "Code in the browser with an AI agent"
+  },
+  {
+   "name": "Higgsfield",
+   "url": "https://higgsfield.ai",
+   "mark": "Hf",
+   "group": "create",
+   "about": "AI video and image effects"
+  },
+  {
+   "name": "Runway",
+   "url": "https://runwayml.com",
+   "mark": "Rw",
+   "group": "create",
+   "about": "AI video generation and editing"
+  },
+  {
+   "name": "Leonardo",
+   "url": "https://leonardo.ai",
+   "mark": "Le",
+   "group": "create",
+   "about": "AI images"
+  },
+  {
+   "name": "ElevenLabs",
+   "url": "https://elevenlabs.io",
+   "mark": "XI",
+   "group": "create",
+   "about": "Natural AI voices"
+  },
+  {
+   "name": "Suno",
+   "url": "https://suno.com",
+   "mark": "Su",
+   "group": "create",
+   "about": "Make songs from a prompt"
+  },
+  {
+   "name": "Gamma",
+   "url": "https://gamma.app",
+   "mark": "Ga",
+   "group": "create",
+   "about": "Slides and documents from a prompt"
+  },
+  {
+   "name": "Napkin",
+   "url": "https://www.napkin.ai",
+   "mark": "Nk",
+   "group": "create",
+   "about": "Diagrams from your text"
+  },
+  {
+   "name": "Canva",
+   "url": "https://www.canva.com",
+   "mark": "Ca",
+   "group": "create",
+   "about": "Design, with AI tools built in"
+  },
+  {
+   "name": "Hugging Face",
+   "url": "https://huggingface.co",
+   "mark": "HF",
+   "group": "learn",
+   "about": "Open models, datasets and demos"
+  },
+  {
+   "name": "NVIDIA build",
+   "url": "https://build.nvidia.com",
+   "mark": "NV",
+   "group": "learn",
+   "about": "Try NVIDIA models, Nemotron included"
+  },
+  {
+   "name": "Kaggle",
+   "url": "https://www.kaggle.com",
+   "mark": "Kg",
+   "group": "learn",
+   "about": "Datasets, notebooks and free GPUs"
+  },
+  {
+   "name": "Colab",
+   "url": "https://colab.research.google.com",
+   "mark": "Cb",
+   "group": "learn",
+   "about": "Python notebooks with a free GPU"
+  },
+  {
+   "name": "GitHub Copilot",
+   "url": "https://github.com/copilot",
+   "mark": "GC",
+   "group": "learn",
+   "about": "AI pair programmer"
+  }
+ ]
+}

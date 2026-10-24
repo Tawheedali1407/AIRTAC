@@ -1,0 +1,15 @@
+id = "leetcode"
+name = "LeetCode"
+version = "0.1.0"
+icon = "code"
+about = "The daily problem, your stats and practice picks."
+order = 30
+keywords = ["leetcode", "daily problem", "problem of the day", "practice problem", "solved", "ranking"]
+quick = ["What's today's LeetCode problem?", "What's my LeetCode profile?", "Pick a medium dp problem"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["leetcode.com"]
+risk = "read"

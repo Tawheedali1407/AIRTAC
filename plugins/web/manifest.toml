@@ -1,0 +1,18 @@
+id = "web"
+name = "Web"
+version = "0.1.0"
+icon = "globe"
+about = "Search the internet with no key (DuckDuckGo, Wikipedia, or your own SearXNG) and read pages."
+order = 12
+always = true
+app = false                 # it has its own page (Web in the menu), not an app page
+keywords = ["search", "web", "internet", "google", "look up", "website", "page", "link", "article", "online"]
+quick = ["Search the web for free GPU options for students"]
+
+[requires]
+imports = ["ddgs"]          # DuckDuckGo search; without it AIRTAC still searches Wikipedia
+optional = true             # loads without ddgs too
+
+[permissions]
+network = ["*"]             # the reader opens any public page you ask for (never private addresses)
+risk = "read"

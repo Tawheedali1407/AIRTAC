@@ -1,0 +1,11 @@
+{
+  "_note": "SAMPLE DATA shaped like the Hacker News Algolia front-page API. Stories are made up for the tests.",
+  "hits": [
+    {"objectID": "1001", "title": "Show HN: A voice assistant that runs on an old laptop", "url": "https://example.com/voice-assistant", "points": 412, "num_comments": 128, "author": "sample_user1"},
+    {"objectID": "1002", "title": "SQLite FTS5 is all the search most apps need", "url": "https://example.com/sqlite-fts5", "points": 365, "num_comments": 97, "author": "sample_user2"},
+    {"objectID": "1003", "title": "Why small models are getting good at tool calling", "url": "https://example.com/small-models-tools", "points": 298, "num_comments": 143, "author": "sample_user3"},
+    {"objectID": "1004", "title": "A visual guide to attention in transformers", "url": "https://example.com/attention-guide", "points": 251, "num_comments": 44, "author": "sample_user4"},
+    {"objectID": "1005", "title": "Ask HN: How do you keep side projects small?", "url": null, "points": 187, "num_comments": 210, "author": "sample_user5"},
+    {"objectID": "1006", "title": "Rate limiting without Redis", "url": "https://example.com/rate-limit", "points": 140, "num_comments": 61, "author": "sample_user6"}
+  ]
+}

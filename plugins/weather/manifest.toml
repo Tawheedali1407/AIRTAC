@@ -1,0 +1,15 @@
+id = "weather"
+name = "Weather"
+version = "0.1.0"
+icon = "cloud"
+about = "Weather now and today's forecast for your town (Open-Meteo, free, no key), said in your morning greeting."
+order = 8
+keywords = ["weather", "forecast", "rain", "temperature", "hot", "cold", "umbrella", "humidity"]
+quick = ["What's the weather today?", "Will it rain tomorrow?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["api.open-meteo.com", "geocoding-api.open-meteo.com"]   # forecast and town search; no key, nothing about you is sent but the town
+risk = "local"

@@ -1,0 +1,24 @@
+id = "wakeword"
+name = "Wake word"
+version = "0.0.0"
+icon = "mic"
+about = "Say \"Hey AIRTAC\" instead of pressing the mic."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 220
+
+[plan]
+steps = [
+    "openWakeWord listens on the CPU for a short phrase (light enough for an i3).",
+    "Its pre-trained models are CC BY-NC-SA: fine for personal use, not for a product.",
+    "Train a custom Hey AIRTAC model with its notebook, or use an existing phrase.",
+    "Then hand the audio to faster-whisper (local speech recognition).",
+]
+packages = ["openwakeword (Apache-2.0 code)", "sounddevice"]
+risk = "local"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

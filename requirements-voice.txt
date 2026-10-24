@@ -1,0 +1,3 @@
+# Private speech on this PC (optional): scripts\plugins.ps1 voice
+faster-whisper==1.2.1   # speech to text (MIT)
+piper-tts==1.8.0        # text to speech (GPL-3.0; voices have their own licences)

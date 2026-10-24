@@ -1,0 +1,17 @@
+id = "recall"
+name = "Session memory"
+version = "0.1.0"
+icon = "clock"
+about = "AIRTAC remembers what each chat was about and brings up anything relevant from earlier chats."
+order = 83
+always = true                # its context hook runs on every question
+app = false
+keywords = ["last time", "earlier", "before", "we talked", "you said", "remember when", "that chat", "previous"]
+quick = ["What did we talk about last time?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []                 # all local
+risk = "local"

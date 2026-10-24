@@ -1,0 +1,15 @@
+id = "news"
+name = "News"
+version = "0.1.0"
+icon = "paper"
+about = "Tech news, new research papers and upcoming coding contests."
+order = 50
+keywords = ["news", "hacker news", "hn", "paper", "papers", "arxiv", "research", "contest", "contests", "codeforces"]
+quick = ["Top Hacker News stories", "New agentic AI papers", "Any upcoming Codeforces contests?"]
+
+[requires]
+imports = []
+
+[permissions]
+network = ["hn.algolia.com", "export.arxiv.org", "rss.arxiv.org", "codeforces.com"]
+risk = "read"

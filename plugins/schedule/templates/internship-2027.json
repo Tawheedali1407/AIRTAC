@@ -1,0 +1,32 @@
+{
+  "_note": "Summer 2027 internship prep plan. Official dates for 2027 are NOT out yet: rows marked estimated copy last year's (2026) dates and must be checked when the new timeline is published. Rows without a source are suggested prep steps, not deadlines.",
+  "name": "Summer 2027 internship prep",
+  "events": [
+    {"title": "Pick 2 or 3 GSoC organisations that use Python and AI", "date": "2026-11-15", "category": "internship",
+     "notes": "Suggested step. Start from last year's accepted organisations list."},
+    {"title": "Run one organisation's project locally and read its contributor guide", "date": "2026-12-20", "category": "internship",
+     "notes": "Suggested step."},
+    {"title": "Get a first pull request merged in a GSoC organisation", "date": "2027-01-31", "category": "internship",
+     "notes": "Suggested goal. Small fixes and docs count."},
+    {"title": "GSoC 2027: accepted organisations announced", "date": "2027-02-19", "category": "internship", "estimated": true,
+     "notes": "2026 date was 19 Feb.", "source": "https://developers.google.com/open-source/gsoc/timeline"},
+    {"title": "Draft the GSoC proposal and ask a mentor for feedback", "date": "2027-03-01", "category": "internship",
+     "notes": "Suggested step."},
+    {"title": "GSoC 2027: contributor applications open", "date": "2027-03-16", "category": "internship", "estimated": true,
+     "notes": "2026 window opened 16 Mar.", "source": "https://developers.google.com/open-source/gsoc/timeline"},
+    {"title": "GSoC 2027: contributor application deadline", "date": "2027-03-31", "time": "23:30", "category": "internship", "estimated": true,
+     "notes": "2026 deadline was 31 Mar, 18:00 UTC (11:30 pm IST).", "source": "https://developers.google.com/open-source/gsoc/timeline"},
+    {"title": "Check whether Microsoft Engage runs in 2027", "date": "2027-04-15", "category": "internship",
+     "notes": "Suggested step. No 2025 or 2026 edition was found; check Microsoft's student programs page."},
+    {"title": "GSoC 2027: accepted contributors announced", "date": "2027-04-30", "category": "internship", "estimated": true,
+     "notes": "2026 date was 30 Apr.", "source": "https://developers.google.com/open-source/gsoc/timeline"},
+    {"title": "GSoC 2027: coding begins", "date": "2027-05-25", "category": "internship", "estimated": true,
+     "notes": "2026 date was 25 May.", "source": "https://developers.google.com/open-source/gsoc/timeline"},
+    {"title": "Amazon ML Summer School 2027: registration may open", "date": "2027-06-01", "category": "internship", "estimated": true,
+     "notes": "The 2026 edition reportedly took registrations 1 to 14 June (unofficial report). Check the official listing.",
+     "source": "https://www.lets-code.co.in/blogs/amazon-ml-summer-school-2026/"},
+    {"title": "Amazon ML Summer School 2027: registration may close", "date": "2027-06-14", "category": "internship", "estimated": true,
+     "notes": "Estimated from the 2026 edition (unofficial report).",
+     "source": "https://www.lets-code.co.in/blogs/amazon-ml-summer-school-2026/"}
+  ]
+}

@@ -1,0 +1,23 @@
+id = "imagegen"
+name = "Image studio"
+version = "0.0.0"
+icon = "image"
+about = "Make illustrations on your own PC with an open image model."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 280
+
+[plan]
+steps = [
+    "stable-diffusion.cpp runs small image models on a CPU (slow on an i3: minutes per picture).",
+    "Check each model's licence before using its pictures in public.",
+    "Exact diagrams stay with the Diagrams plugin (image models draw text badly).",
+]
+packages = ["stable-diffusion.cpp (MIT)"]
+risk = "local"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

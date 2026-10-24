@@ -1,0 +1,113 @@
+# Builds Airtac Mobile (mobile/) into an Android APK on GitHub's servers, so the i3 PC never has to run Flutter or
+# Android Studio. Runs when you start it by hand (Actions > Build Airtac Mobile APK > Run workflow) or when a push
+# changes mobile/. Lives in .github/workflows/ (a copy is kept in mobile/ci/). The APK and its SHA-256 come out as a downloadable artifact; put airtac.apk in mobile/release/.
+#
+# Optional repository secrets (Settings > Secrets and variables > Actions), see docs/MOBILE.md:
+#   ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD  - a stable signing key
+#   GOOGLE_SERVER_CLIENT_ID  - only if your PC is signed in to Google (pairing then checks the phone's account)
+name: Build Airtac Mobile APK
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "mobile/**"
+      - ".github/workflows/build_apk.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-java@v6.1.0
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: 3.47.7
+          cache: true
+
+      - name: Make the Android project, then apply Airtac's settings
+        run: |
+          flutter --version
+          flutter create --platforms=android --org com.airtac --project-name airtac_mobile .
+          rm -rf android/app/src/main/kotlin
+          cp -r android_overrides/. android/
+
+      - name: Get packages
+        run: flutter pub get
+
+      # Flutter 3.47's new Android projects use Android Gradle Plugin 9, which refuses
+      # getDefaultProguardFile('proguard-android.txt'). flutter_inappwebview_android (and maybe other plugins) still
+      # ask for it, so the build stopped at "A problem occurred evaluating project ':flutter_inappwebview_android'".
+      # Swap in the file AGP 9 accepts, only inside the downloaded plugin copies on this runner.
+      - name: Patch plugins for Android Gradle Plugin 9
+        run: |
+          cache="${PUB_CACHE:-$HOME/.pub-cache}"
+          { grep -rl "proguard-android.txt" "$cache/hosted" --include="build.gradle*" || true; } | while read -r f; do
+            sed -i "s/proguard-android\.txt/proguard-android-optimize.txt/g" "$f"
+            echo "patched $f"
+          done
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos
+
+      - name: Test
+        run: flutter test
+
+      - name: Signing key (if you added the secrets)
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 --decode > android/airtac-release.jks
+            {
+              echo "storeFile=airtac-release.jks"
+              echo "storePassword=$STORE_PASSWORD"
+              echo "keyAlias=$KEY_ALIAS"
+              echo "keyPassword=$KEY_PASSWORD"
+            } > android/key.properties
+            echo "Signing with your release key."
+          else
+            echo "::warning::No signing secrets: the APK is signed with a throwaway debug key. Add them (docs/MOBILE.md) so updates install over the old app."
+          fi
+
+      - name: Build the APK
+        env:
+          GOOGLE_SERVER_CLIENT_ID: ${{ secrets.GOOGLE_SERVER_CLIENT_ID }}
+        run: |
+          flutter build apk --release --dart-define=GOOGLE_SERVER_CLIENT_ID="$GOOGLE_SERVER_CLIENT_ID"
+          mkdir -p release
+          cp build/app/outputs/flutter-apk/app-release.apk release/airtac.apk
+          (cd release && sha256sum airtac.apk | tee airtac.apk.sha256)
+
+      - name: Remove the key from the runner
+        if: always()
+        run: rm -f android/airtac-release.jks android/key.properties
+
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: airtac-mobile-apk
+          path: |
+            mobile/release/airtac.apk
+            mobile/release/airtac.apk.sha256
+          retention-days: 14
+          if-no-files-found: error

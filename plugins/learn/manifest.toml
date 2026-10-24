@@ -1,0 +1,16 @@
+id = "learn"
+name = "Become an AI expert"
+version = "0.1.0"
+icon = "brain"
+about = "Your AI/AGI roadmap week by week: what to do now, a level check, the plan in Schedule, and re-planning without guilt."
+order = 19
+action = "learn"            # the app page draws the stages, the level check and the plan buttons
+keywords = ["roadmap", "learning plan", "this week", "learn ai", "agi", "zero-to-agi", "lab", "fell behind", "behind schedule", "level check"]
+quick = ["What's on my AI roadmap this week?", "Add my AI roadmap to the schedule", "I fell behind, move my plan by a week"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

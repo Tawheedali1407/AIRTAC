@@ -1,0 +1,16 @@
+id = "github"
+name = "GitHub"
+version = "0.1.0"
+icon = "branch"
+about = "Your repos, issues and today's activity. Opens issues after you confirm."
+order = 40
+keywords = ["github", "repo", "repos", "issue", "issues", "readme", "commit", "commits", "pull request", "pr"]
+quick = ["What's on my GitHub today?", "Open issues in my airtac repo", "Show the readme for my airtac repo"]
+
+[requires]
+imports = []
+secrets = ["GITHUB_TOKEN"]   # optional: without it you see labelled sample data
+
+[permissions]
+network = ["api.github.com"]
+risk = "write"               # create_issue changes GitHub, so it always waits for your Confirm

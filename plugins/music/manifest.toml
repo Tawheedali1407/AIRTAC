@@ -1,0 +1,16 @@
+id = "music"
+name = "Music"
+version = "0.1.0"
+icon = "music"
+about = "Plays songs from your own Music folder, right in the page. No accounts, no streaming service."
+order = 85
+keywords = ["play", "music", "song", "songs", "playlist"]
+quick = ["Play some music", "Play lofi"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+files = ["your Music folder (read only)"]
+risk = "local"

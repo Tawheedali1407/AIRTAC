@@ -1,0 +1,98 @@
+{
+  "_note": "Ali's remaining plan for the Nebius x NVIDIA Global AI Hackathon, from HACKATHON.md section 8. Only the deadline is an official date; the rest are his own target days.",
+  "name": "Hackathon plan (Nebius x NVIDIA)",
+  "events": [
+    {
+      "title": "Set up CI and commit the latest AIRTAC files",
+      "date": "2026-10-12",
+      "category": "project",
+      "notes": "Move _workflows into .github\\workflows, pip install -r requirements.txt, python -m pytest, then commit."
+    },
+    {
+      "title": "Claim the Token Factory credits and add your key",
+      "date": "2026-10-12",
+      "category": "project",
+      "notes": "Promo form with code NEBIUS-DEVPOST-GLOBAL26, plus the Nebius Builders Program. HACKATHON.md section 1."
+    },
+    {
+      "title": "Run the live API checks",
+      "date": "2026-10-12",
+      "category": "project",
+      "notes": "python scripts\\check_apis.py --live, then paste check F into BUILD_LOG.md. Proves the project calls Token Factory, which the rules require. Try your phone hotspot if college Wi-Fi blocks it."
+    },
+    {
+      "title": "Deploy the demo: GitHub, Render and Netlify",
+      "date": "2026-10-13",
+      "category": "project",
+      "notes": "DEPLOY.md, steps 0 to 6. Test on mobile data."
+    },
+    {
+      "title": "Switch the brain to Nemotron and score the tool choice",
+      "date": "2026-10-14",
+      "category": "project",
+      "notes": "python scripts\\eval_tools.py should score 16 of 21 or better. If lower, sharpen the tool descriptions or try the Nano model."
+    },
+    {
+      "title": "Switch the tools to live data",
+      "date": "2026-10-15",
+      "category": "project",
+      "notes": "GitHub token, then LIVE_PUBLIC_APIS=true, then Tavily. One at a time, three correct answers each. Tavily also aims at the $3,000 Best Use of Tavily prize."
+    },
+    {
+      "title": "Turn on study tools and images with real data",
+      "date": "2026-10-17",
+      "category": "project",
+      "notes": "Questions from your real syllabus, one AI image, and three real practice problems in a solutions PDF."
+    },
+    {
+      "title": "Set up Hermes Agent on Telegram",
+      "date": "2026-10-18",
+      "category": "project",
+      "notes": "HACKATHON.md section 4. Schedule the weekday brief."
+    },
+    {
+      "title": "Polish the voice and the desktop shortcut",
+      "date": "2026-10-20",
+      "category": "project",
+      "notes": "Pick an Edge natural voice in the menu. scripts\\make_shortcut.ps1 -AtLogin makes AIRTAC open and read your day when Windows starts."
+    },
+    {
+      "title": "Final deploy of the public demo",
+      "date": "2026-10-22",
+      "category": "project",
+      "notes": "Works on mobile data from a fresh browser."
+    },
+    {
+      "title": "Optional extras: Nebius Serverless or NemoClaw",
+      "date": "2026-10-23",
+      "category": "project",
+      "notes": "Only if everything above works. Drop these first if you're late."
+    },
+    {
+      "title": "Feature freeze and security check",
+      "date": "2026-10-26",
+      "category": "project",
+      "notes": "scan_for_secrets, .env ignored, git log -p clean. Nothing new after today."
+    },
+    {
+      "title": "Record the demo video and write the Devpost text",
+      "date": "2026-10-27",
+      "category": "project",
+      "notes": "Video plan and description outline are in HACKATHON.md section 8."
+    },
+    {
+      "title": "Submit AIRTAC on Devpost",
+      "date": "2026-10-28",
+      "category": "project",
+      "notes": "Take a screenshot of the confirmation."
+    },
+    {
+      "title": "Hackathon deadline",
+      "date": "2026-10-30",
+      "time": "22:30",
+      "category": "project",
+      "notes": "Official deadline: 30 Oct 2026, 10:00 am PDT, which is 10:30 pm in India.",
+      "source": "https://nebiusglobalaihackathon.devpost.com/"
+    }
+  ]
+}

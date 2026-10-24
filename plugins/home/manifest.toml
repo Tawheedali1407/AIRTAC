@@ -1,0 +1,23 @@
+id = "home"
+name = "Home"
+version = "0.0.0"
+icon = "home"
+about = "Lights and plugs through Home Assistant, the open source smart-home hub."
+status = "planned"          # on the roadmap: AIRTAC lists it but doesn't load it
+order = 240
+
+[plan]
+steps = [
+    "Run Home Assistant (Apache-2.0) on any spare device and make a long-lived token.",
+    "Tools: home_status (read), home_switch (device: confirm).",
+    "Only entities you list in config are visible to AIRTAC.",
+]
+packages = ["Home Assistant (separate install)"]
+risk = "device"
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "device"

@@ -1,0 +1,15 @@
+# Made by `flutter create` in CI (see .github/workflows/build_apk.yml) or on the laptop; overrides live in android_overrides/.
+android/
+ios/
+linux/
+macos/
+windows/
+web/
+.dart_tool/
+build/
+.flutter-plugins-dependencies
+pubspec.lock
+release/*.apk
+release/*.sha256
+*.jks
+key.properties

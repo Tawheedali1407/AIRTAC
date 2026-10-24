@@ -1,0 +1,15 @@
+id = "devtools"
+name = "Dev tools"
+version = "0.1.0"
+icon = "code"
+about = "Set up Claude Code, claude-mem, Agent Reach and the AIRTAC-Claude Code link on this PC."
+order = 88
+app = false
+keywords = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []                # the setup commands reach the internet themselves; the page only starts them on this PC
+risk = "device"             # it installs software on your PC: every step waits for your Confirm (a click on this PC)

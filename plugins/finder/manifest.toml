@@ -1,0 +1,16 @@
+id = "finder"
+name = "Search everything"
+version = "0.1.0"
+icon = "search"
+about = "Ctrl+K: find your chats, notes, knowledge, schedule, files, apps and settings in one place."
+order = 6
+always = true
+app = false                 # it's the Ctrl+K palette, not a page
+keywords = []
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"

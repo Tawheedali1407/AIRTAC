@@ -1,0 +1,55 @@
+{
+  "_note": "SAMPLE DATA for offline development and the tests. The daily problem and profile stats are not live.",
+  "daily": {
+    "date": "2026-10-08",
+    "title": "Longest Substring Without Repeating Characters",
+    "slug": "longest-substring-without-repeating-characters",
+    "difficulty": "Medium",
+    "topics": ["Hash Table", "String", "Sliding Window"],
+    "summary": "Given a string s, find the length of the longest substring without repeating characters."
+  },
+  "profile": {
+    "username": "MMDTAWHEEDALI",
+    "solved": {"Easy": 64, "Medium": 41, "Hard": 6},
+    "ranking": 812345,
+    "recent": ["Coin Change", "Valid Parentheses", "Two Sum"]
+  },
+  "problems": [
+    {"title": "Two Sum", "slug": "two-sum", "difficulty": "Easy", "topics": ["array", "hash table"]},
+    {"title": "Valid Parentheses", "slug": "valid-parentheses", "difficulty": "Easy", "topics": ["string", "stack"]},
+    {"title": "Merge Two Sorted Lists", "slug": "merge-two-sorted-lists", "difficulty": "Easy", "topics": ["linked list", "recursion"]},
+    {"title": "Best Time to Buy and Sell Stock", "slug": "best-time-to-buy-and-sell-stock", "difficulty": "Easy", "topics": ["array", "dynamic programming"]},
+    {"title": "Climbing Stairs", "slug": "climbing-stairs", "difficulty": "Easy", "topics": ["dynamic programming", "math"]},
+    {"title": "Longest Substring Without Repeating Characters", "slug": "longest-substring-without-repeating-characters", "difficulty": "Medium", "topics": ["string", "hash table", "sliding window"]},
+    {"title": "3Sum", "slug": "3sum", "difficulty": "Medium", "topics": ["array", "two pointers", "sorting"]},
+    {"title": "Container With Most Water", "slug": "container-with-most-water", "difficulty": "Medium", "topics": ["array", "two pointers", "greedy"]},
+    {"title": "Coin Change", "slug": "coin-change", "difficulty": "Medium", "topics": ["array", "dynamic programming"]},
+    {"title": "Longest Increasing Subsequence", "slug": "longest-increasing-subsequence", "difficulty": "Medium", "topics": ["array", "dynamic programming", "binary search"]},
+    {"title": "Number of Islands", "slug": "number-of-islands", "difficulty": "Medium", "topics": ["graph", "dfs", "bfs", "matrix"]},
+    {"title": "Course Schedule", "slug": "course-schedule", "difficulty": "Medium", "topics": ["graph", "topological sort", "dfs", "bfs"]},
+    {"title": "Binary Tree Level Order Traversal", "slug": "binary-tree-level-order-traversal", "difficulty": "Medium", "topics": ["tree", "bfs"]},
+    {"title": "Search in Rotated Sorted Array", "slug": "search-in-rotated-sorted-array", "difficulty": "Medium", "topics": ["array", "binary search"]},
+    {"title": "Kth Largest Element in an Array", "slug": "kth-largest-element-in-an-array", "difficulty": "Medium", "topics": ["array", "heap", "sorting"]},
+    {"title": "Merge k Sorted Lists", "slug": "merge-k-sorted-lists", "difficulty": "Hard", "topics": ["linked list", "heap"]},
+    {"title": "Trapping Rain Water", "slug": "trapping-rain-water", "difficulty": "Hard", "topics": ["array", "two pointers", "stack", "dynamic programming"]},
+    {"title": "Median of Two Sorted Arrays", "slug": "median-of-two-sorted-arrays", "difficulty": "Hard", "topics": ["array", "binary search"]},
+    {"title": "Word Ladder", "slug": "word-ladder", "difficulty": "Hard", "topics": ["graph", "bfs", "string"]}
+  ],
+  "solutions": {
+    "two sum": {
+      "approach": "Walk the array once and keep a dictionary from each value to its index. For each number, check whether target minus that number is already in the dictionary.",
+      "code": "def two_sum(nums, target):\n    seen = {}\n    for i, x in enumerate(nums):\n        if target - x in seen:\n            return [seen[target - x], i]\n        seen[x] = i\n    return []",
+      "complexity": "O(n) time, O(n) space."
+    },
+    "longest substring": {
+      "approach": "Use a sliding window with a dictionary of the last index of each character. When a repeat appears inside the window, move the left edge just past its previous position.",
+      "code": "def length_of_longest_substring(s):\n    last = {}\n    left = best = 0\n    for right, ch in enumerate(s):\n        if last.get(ch, -1) >= left:\n            left = last[ch] + 1\n        last[ch] = right\n        best = max(best, right - left + 1)\n    return best",
+      "complexity": "O(n) time, O(k) space where k is the alphabet size."
+    },
+    "valid parentheses": {
+      "approach": "Push opening brackets on a stack. For each closing bracket, the top of the stack must be its matching opener, and the stack must be empty at the end.",
+      "code": "def is_valid(s):\n    pairs = {')': '(', ']': '[', '}': '{'}\n    stack = []\n    for ch in s:\n        if ch in pairs:\n            if not stack or stack.pop() != pairs[ch]:\n                return False\n        else:\n            stack.append(ch)\n    return not stack",
+      "complexity": "O(n) time, O(n) space."
+    }
+  }
+}

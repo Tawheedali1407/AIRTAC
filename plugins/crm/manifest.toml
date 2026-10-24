@@ -1,0 +1,15 @@
+id = "crm"
+name = "People and pipeline"
+version = "0.1.0"
+icon = "people"
+about = "Your schedule as a CRM: people and contacts, a board with stages, follow-up reminders on your schedule, and notes and a history for each person or item."
+order = 9
+keywords = ["contact", "contacts", "follow up", "follow-up", "pipeline", "crm", "recruiter", "mentor", "lead", "deal", "application"]
+quick = ["Who should I follow up with this week?", "Add a note for Priya: sent my resume"]
+
+[requires]
+imports = []
+
+[permissions]
+network = []
+risk = "local"
